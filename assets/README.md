@@ -2,7 +2,7 @@
 
 ## Typing introduction
 
-`intro-typing.svg` types **Hey, I am electrifiedchan** in a nine-second loop, holds the completed line for over three seconds, then resets. It adapts its text color to light/dark mode and shows the complete line without a cursor when reduced motion is requested. The SVG is self-contained and uses no external typing service.
+`intro-typing.svg` types **Hey, I am electrifiedchan** in a 7.5-second loop and holds the completed line for 2.7 seconds. The text, reveal boundary, and cursor share a fixed 20-pixel character grid. The cursor stays visible during typing/deletion and blinks only during the pause. The SVG adapts to light/dark mode, shows the complete line for reduced motion, and uses no external service.
 
 ## Built scene assets
 
@@ -11,7 +11,7 @@ Each GIF has a matching `<name>-static.png` selected for reduced-motion viewing.
 | Asset | Dimensions | Frames | Loop | Palette samples / colors | GIF KiB | Static PNG KiB |
 | --- | --- | ---: | ---: | --- | ---: | ---: |
 | `sunset-cover.gif` | 832 × 288 | 120 | 14.4 s | 4 / 128 | 380.26 | 10.33 |
-| `solar-system.gif` | 832 × 380 | 180 | 21.6 s | 4 / 128 | 677.22 | 8.28 |
+| `solar-system.gif` | 832 × 380 | 180 | 21.6 s | 4 / 128 | 692.47 | 8.28 |
 | `project-aquarium.gif` | 832 × 416 | 240 | 28.8 s | 16 / 192 | 2031.69 | 23.67 |
 
 Sizes use 1 KiB = 1024 bytes. All GIFs fit the 2 MiB / 2048 KiB per-file budget; the reef has 16.31 KiB of headroom. Rebuilding after future art edits may change these sizes.
@@ -22,7 +22,7 @@ Orange clouds with depth-dependent drift, six-cycle reflection ripples, five-cyc
 
 ### Solar-system skills scene
 
-The CH mark is rendered from the checked-in `avatar-source.png`, which remains a required build input. All six planets complete one revolution per loop. An irregular, seeded asteroid belt rotates with them; a comet crosses from outside the frame with a growing/shrinking trail. Near/far planets change size and highlight tint. Sun convection uses four/six cycles, the corona uses six, and stars use one/two/three. The scene title is drawn at scale 2.
+The CH mark is rendered from the checked-in `avatar-source.png`, which remains a required build input. The two innermost planets complete two revolutions per loop (10.8 seconds each); the outer four complete one (21.6 seconds). An irregular, seeded asteroid belt rotates once per loop. The comet has a gently twinkling four-point glare, completing eight sparkle cycles per loop, and a growing/shrinking trail. Near/far planets change size and highlight tint. Sun convection uses four/six cycles, the corona uses six, and stars use one/two/three. The scene title is drawn at scale 2.
 
 ### Project reef
 

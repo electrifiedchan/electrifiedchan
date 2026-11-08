@@ -4,9 +4,9 @@
 
 The reading order is a wide sunset-lake cover, centered typing introduction and social badges, four featured projects in a **three-column table**, a full-width solar system in **Tech stack**, tech-logo tiles, contact, and a project reef at the bottom. Additional projects fold into a details section. Warm orange and gold in the cover lead into the sun and the cooler underwater palette.
 
-The introduction reads **Hey, I am electrifiedchan**. Its local SVG types character by character in a nine-second loop and holds the complete line for over three seconds. Text colors adapt to light/dark mode; reduced motion shows the full text with no cursor animation. The heading's image includes the complete introduction as alt text.
+The introduction reads **Hey, I am electrifiedchan**. Its local SVG types character by character in a 7.5-second loop and holds the complete line for 2.7 seconds. Explicit character positions and the cursor use the same 20-pixel grid. The cursor remains visible while typing/deleting and blinks only while paused. Text colors adapt to light/dark mode; reduced motion shows the full text with no cursor animation. The heading's image includes the complete introduction as alt text.
 
-The solar system stays full-size at 832 pixels wide in the skills section. Its CH sun has a moving surface and circular corona. All six planets complete one revolution per 21.6-second loop. The asteroid belt uses `Random(11)`, jittered positions, two shades, and small rock silhouettes. The comet enters and leaves beyond the frame during phase .30–.62 with a ramped trail. Planet sizes and highlights provide depth cues. These visuals are decorative, not repository statistics.
+The solar system stays full-size at 832 pixels wide in the skills section. Its CH sun has a moving surface and circular corona. Python and TypeScript, the two innermost planets, orbit twice per 21.6-second loop; the outer four orbit once. The asteroid belt uses `Random(11)`, jittered positions, two shades, and small rock silhouettes. The comet enters and leaves beyond the frame during phase .30–.62 with a ramped trail and a softly twinkling four-point glare. The glare uses eight integer cycles per loop. Planet sizes and highlights provide depth cues. These visuals are decorative, not repository statistics.
 
 The README uses repository-hosted images, so its appearance does not depend on a badge or animation service. Every scene has a `<picture>` element that selects its matching `*-static.png` for browsers that support the reduced-motion media preference; GIFs are the default.
 
@@ -27,6 +27,7 @@ This combines those ideas with the profile's earlier **Project / What it does / 
 - **[Sunset-lake pixel-art reference on GIPHY](https://giphy.com/gifs/xWMPYx55WNhX136T0V)** — warm orange clouds, a golden sun, a lake reflection, and dark foreground reeds. The wide recreation adds visible warm glare, cloud parallax, shifting reflections, and a three-bird flock.
 - **[Blue pixel puffer-fish reference on Pinterest](https://in.pinterest.com/pin/781022760377747642/)** — the reference for round bodies, oversized eyes, white bellies, blue fins, and pink lips. The aquarium uses newly drawn sprites with project-specific palettes.
 - **[Coral and aquatic plants reference on Pinterest](https://in.pinterest.com/pin/575334921160802851/)** — the reference for branching red coral, hollow purple tube sponges, turquoise foliage, and a golden starfish. A large original anchor and chain, shells, and a broken wooden hull complete the seabed.
+- **[Lucide's four-point sparkle](https://lucide.dev/icons/sparkle)** — visual reference for the comet's four-sided glare. The comet is drawn as original pixel geometry; no external icon is embedded.
 
 The footer is **The Project Reef**, an open-water scene with light shafts, distant fish silhouettes, a sandy clearing, and overlapping foreground plants. The blue, violet, mint, and gold inhabitants identify G.U.A.R.D., GitReal, TeamTruth, and ExamHub. Their colors are keyed by a small legend rather than separate exhibit stations.
 
@@ -45,13 +46,13 @@ All frames were decoded and compared with fresh RGB renders using Pillow 12.3.0.
 | Scene | Frames | Palette samples / colors | GIF KiB | PNG KiB | p99.9 palette error |
 | --- | ---: | --- | ---: | ---: | ---: |
 | Sunset | 120 | 4 / 128 | 380.26 | 10.33 | 6 |
-| Solar system | 180 | 4 / 128 | 677.22 | 8.28 | 4 |
+| Solar system | 180 | 4 / 128 | 692.47 | 8.28 | 4 |
 | Reef | 240 | 16 / 192 | 2031.69 | 23.67 | 6 |
 
 | Scene | Last → first changed px | Median consecutive changed px | Consecutive range |
 | --- | ---: | ---: | --- |
 | Sunset | 1,724 | 3,912 | 1,460–9,292 |
-| Solar system | 5,412 | 5,792 | 5,180–6,320 |
+| Solar system | 5,716 | 6,176 | 5,540–7,200 |
 | Reef | 20,328 | 15,448 | 4,912–20,900 |
 
 Every seam is within its consecutive-frame range; every GIF is below 2 MiB. The reef has 16.31 KiB of remaining budget. All periodic motion uses integer cycle counts, and source renders at the loop endpoints are pixel-identical. Static PNGs match frame zero of the RGB render. Recheck measurements after any future artwork edit.

@@ -42,8 +42,8 @@ FONT = {
 # name, orbital radii, planet size, palette, revolutions per seamless loop, phase
 # These are creative stack symbols, not language percentages or live metrics.
 WORLDS = [
-    ("PYTHON", 46, 26, 5, ((247, 204, 104), (175, 115, 53), (255, 235, 169)), 1, 0.45),
-    ("TYPESCRIPT", 70, 34, 6, ((95, 157, 245), (48, 77, 147), (163, 205, 255)), 1, 3.45),
+    ("PYTHON", 46, 26, 5, ((247, 204, 104), (175, 115, 53), (255, 235, 169)), 2, 0.45),
+    ("TYPESCRIPT", 70, 34, 6, ((95, 157, 245), (48, 77, 147), (163, 205, 255)), 2, 3.45),
     ("JAVASCRIPT", 96, 43, 5, ((247, 173, 98), (161, 77, 60), (255, 220, 151)), 1, 5.00),
     ("REACT", 121, 51, 7, ((90, 212, 226), (40, 111, 159), (178, 249, 242)), 1, 2.10),
     ("FASTAPI", 148, 60, 6, ((175, 148, 241), (96, 71, 154), (224, 199, 255)), 1, 5.65),
@@ -122,7 +122,14 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
         trail_length = round(17 * min(1, travel / .15, (1 - travel) / .15))
         for step in range(trail_length, -1, -1):
             draw.point((x - step, y - step // 4), fill=(60 + (17 - step) * 8, 90 + (17 - step) * 7, 133 + (17 - step) * 5))
-        draw.line((x, y, x + 1, y), fill=(255, 245, 205))
+        # A gently breathing four-point glare, with eight whole cycles per loop.
+        twinkle = (math.sin(phase * math.tau * 8) + 1) / 2
+        arm = 2 + round(twinkle * 2)
+        draw.line((x - arm - 1, y, x + arm + 1, y), fill=(84, 109, 148))
+        draw.line((x, y - arm - 1, x, y + arm + 1), fill=(84, 109, 148))
+        draw.polygon(((x, y - arm), (x + 1, y - 1), (x + arm, y), (x + 1, y + 1),
+                      (x, y + arm), (x - 1, y + 1), (x - arm, y), (x - 1, y - 1)), fill=(255, 245, 205))
+        draw.point((x, y), fill=(255, 255, 241))
 
     # A filled star with convection and a soft circular corona. No pointed rays
     # or orbiting sparks: the CH mark sits on the sun rather than in a black hole.

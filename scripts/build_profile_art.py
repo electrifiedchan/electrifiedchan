@@ -42,9 +42,9 @@ FONT = {
 # name, orbital radii, planet size, palette, revolutions per seamless loop, phase
 # These are creative stack symbols, not language percentages or live metrics.
 WORLDS = [
-    ("PYTHON", 46, 26, 5, ((247, 204, 104), (175, 115, 53), (255, 235, 169)), 3, 0.45),
-    ("TYPESCRIPT", 70, 34, 6, ((95, 157, 245), (48, 77, 147), (163, 205, 255)), 2, 3.45),
-    ("JAVASCRIPT", 96, 43, 5, ((247, 173, 98), (161, 77, 60), (255, 220, 151)), 2, 5.00),
+    ("PYTHON", 46, 26, 5, ((247, 204, 104), (175, 115, 53), (255, 235, 169)), 1, 0.45),
+    ("TYPESCRIPT", 70, 34, 6, ((95, 157, 245), (48, 77, 147), (163, 205, 255)), 1, 3.45),
+    ("JAVASCRIPT", 96, 43, 5, ((247, 173, 98), (161, 77, 60), (255, 220, 151)), 1, 5.00),
     ("REACT", 121, 51, 7, ((90, 212, 226), (40, 111, 159), (178, 249, 242)), 1, 2.10),
     ("FASTAPI", 148, 60, 6, ((175, 148, 241), (96, 71, 154), (224, 199, 255)), 1, 5.65),
     ("SUPABASE", 177, 67, 7, ((101, 207, 155), (41, 116, 110), (180, 245, 182)), 1, 3.45),
@@ -80,7 +80,7 @@ def planet(draw: ImageDraw.ImageDraw, x: int, y: int, radius: int, colors, ringe
 
 
 def scene(logo: Image.Image, frame: int) -> Image.Image:
-    phase = frame / FRAMES
+    phase = (frame % FRAMES) / FRAMES
     image = Image.new("RGB", (WIDTH, HEIGHT), BACKGROUND)
     draw = ImageDraw.Draw(image)
 
@@ -88,7 +88,7 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
     randomizer = random.Random(73)
     for index in range(100):
         x, y = randomizer.randrange(10, WIDTH - 10), randomizer.randrange(25, HEIGHT - 20)
-        brightness = (math.sin(phase * math.tau + index * 1.71) + 1) / 2
+        brightness = (math.sin(phase * math.tau * (1 + index % 3) + index * 1.71) + 1) / 2
         color = (43, 60, 91) if brightness < .75 else (94, 122, 163)
         draw.point((x, y), fill=color)
         if index % 19 == 0:
@@ -99,21 +99,34 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
     for _, rx, ry, *_ in WORLDS:
         draw.ellipse((cx - rx, cy - ry, cx + rx, cy + ry), outline=(24, 39, 61))
 
-    # Sparse asteroid belt between the middle and outer worlds.
+    # Fixed irregularity makes the belt's one-revolution motion visible.
+    belt_random = random.Random(11)
     for index in range(48):
-        angle = index * math.tau / 48
-        draw.point((round(cx + 133 * math.cos(angle)), round(cy + 55 * math.sin(angle))), fill=(54, 55, 78))
+        angle = index * math.tau / 48 + belt_random.uniform(-.06, .06) + phase * math.tau
+        rx = 133 * (1 + belt_random.uniform(-.04, .04))
+        ry = 55 * (1 + belt_random.uniform(-.04, .04))
+        color = belt_random.choice(((54, 55, 78), (84, 86, 116)))
+        x, y = round(cx + rx * math.cos(angle)), round(cy + ry * math.sin(angle))
+        if index % 3 == 0:
+            draw.polygon(((x - 2, y), (x - 1, y - 1), (x + 1, y - 1), (x + 2, y), (x + 1, y + 1), (x - 1, y + 1)), fill=color)
+            draw.point((x, y - 1), fill=(84, 86, 116))
+        elif index % 3 == 1:
+            draw.line((x, y, x + 1, y), fill=color)
+        else:
+            draw.point((x, y), fill=color)
 
-    # A passing comet stays in the upper part of the scene and fades before wrap.
-    if .38 < phase < .58:
-        travel = (phase - .38) / .20
-        x, y = round(62 + travel * 113), round(31 + travel * 17)
-        for step in range(17, -1, -1):
+    # Enter and leave beyond the frame; ease the trail in and out at each end.
+    if .30 < phase < .62:
+        travel = (phase - .30) / .32
+        x, y = round(-18 + travel * (WIDTH + 36)), round(31 + travel * 17)
+        trail_length = round(17 * min(1, travel / .15, (1 - travel) / .15))
+        for step in range(trail_length, -1, -1):
             draw.point((x - step, y - step // 4), fill=(60 + (17 - step) * 8, 90 + (17 - step) * 7, 133 + (17 - step) * 5))
+        draw.line((x, y, x + 1, y), fill=(255, 245, 205))
 
     # A filled star with convection and a soft circular corona. No pointed rays
     # or orbiting sparks: the CH mark sits on the sun rather than in a black hole.
-    pulse = (math.sin(phase * math.tau * 3) + 1) / 2
+    pulse = (math.sin(phase * math.tau * 6) + 1) / 2
     for radius, base in ((28, (18, 19, 30)), (25, (33, 25, 32)), (23, (61, 35, 31)), (21, (125, 60, 31))):
         color = tuple(round(channel + pulse * (8 if index == 0 else 3)) for index, channel in enumerate(base))
         draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), fill=color)
@@ -122,7 +135,7 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
         for dx in range(-19, 20):
             if dx * dx + dy * dy <= 19 * 19:
                 radial = 1 - math.sqrt(dx * dx + dy * dy) / 19
-                convection = math.sin(dx * .52 + phase * math.tau * 2) * math.cos(dy * .65 - phase * math.tau * 3)
+                convection = math.sin(dx * .52 + phase * math.tau * 4) * math.cos(dy * .65 - phase * math.tau * 6)
                 level = max(0, min(4, round(1 + radial * 2 + convection * .85)))
                 draw.point((cx + dx, cy + dy), fill=sun_colors[level])
     image.paste((137, 61, 28), (cx - 13, cy - 13), logo)
@@ -132,6 +145,15 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
     positions = []
     for index, (_, rx, ry, radius, colors, revolutions, offset) in enumerate(WORLDS):
         angle = phase * math.tau * revolutions + offset
+        depth = math.sin(angle)
+        if depth > .6:
+            radius += 1
+        elif depth < -.6:
+            radius = max(3, radius - 1)
+        if depth < 0:
+            base, shadow, light = colors
+            light = tuple(round(channel * .85 + background * .15) for channel, background in zip(light, BACKGROUND))
+            colors = (base, shadow, light)
         x, y = round(cx + rx * math.cos(angle)), round(cy + ry * math.sin(angle))
         positions.append((y, x, radius, colors, index == 4))
     for y, x, radius, colors, ringed in sorted(positions):
@@ -142,7 +164,7 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
     draw.line((1, 19, WIDTH - 2, 19), fill=(34, 48, 71))
     for x, color in ((11, (233, 122, 139)), (19, (236, 193, 114)), (27, (106, 210, 166))):
         draw.rectangle((x, 8, x + 3, 11), fill=color)
-    text(draw, "ELECTRIFIEDCHAN / DEV UNIVERSE", 41, 8, (177, 198, 222))
+    text(draw, "ELECTRIFIEDCHAN / DEV UNIVERSE", 41, 5, (177, 198, 222), scale=2)
     draw.line((12, 175, WIDTH - 13, 175), fill=(27, 41, 61))
     for index, (name, _, _, _, colors, *_rest) in enumerate(WORLDS):
         x = 16 + index * 66
@@ -159,7 +181,7 @@ def main() -> None:
     ASSETS.mkdir(exist_ok=True)
     source = ASSETS / "avatar-source.png"
     if not source.exists():
-        parser.error("Run scripts/build_logo.py first to fetch your avatar.")
+        parser.error("Missing assets/avatar-source.png; restore the checked-in source avatar.")
     with Image.open(source) as avatar:
         logo = ImageOps.fit(avatar.convert("L"), (28, 28), method=Image.Resampling.LANCZOS)
         logo = logo.point(lambda value: 255 if value > 155 else 0)

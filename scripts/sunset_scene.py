@@ -42,7 +42,7 @@ def cloud(width, height, seed, colors):
 
 
 def sunset(frame):
-    phase = frame / COVER_FRAMES
+    phase = (frame % COVER_FRAMES) / COVER_FRAMES
     image = Image.new('RGB', (WIDTH, HEIGHT))
     d = ImageDraw.Draw(image)
     for y in range(98):
@@ -57,10 +57,15 @@ def sunset(frame):
     # Golden corona and warm horizontal glare, followed by the solar disc.
     sx, sy = 214, 48
     glow = .5 + .5 * math.sin(phase * math.tau)
+    corona_pulse = round(.5 + .5 * math.sin(phase * math.tau * 2))
     for radius, color in ((35, (246, 137, 70)), (31, (252, 158, 81)), (27, (255, 190, 106))):
+        radius += corona_pulse
         d.ellipse((sx - radius, sy - radius, sx + radius, sy + radius), fill=color)
-    d.line((sx - 59, sy, sx + 59, sy), fill=(255, 174, 86))
+    glare_extent = round(62 + glow * 8)
+    d.line((sx - glare_extent, sy, sx + glare_extent, sy), fill=(255, 205, 116))
     d.line((sx - 37, sy - 1, sx + 37, sy - 1), fill=(255, 205, 116))
+    vertical_glare = 27 + round(glow * 3)
+    d.line((sx, sy - vertical_glare, sx, sy + vertical_glare), fill=(255, 212, 128))
     d.ellipse((sx - 22, sy - 22, sx + 22, sy + 22), fill=(255, 232, 149))
     d.ellipse((sx - 19, sy - 20, sx + 19, sy + 17), fill=(255, 238, 165))
 
@@ -73,7 +78,7 @@ def sunset(frame):
         (117, 63, 123, 25, 27, ((245, 129, 62), (255, 181, 91), (255, 221, 137))),
     )
     for index, (x, y, width, height, seed, colors) in enumerate(formations):
-        drift = round(math.sin(phase * math.tau + index * .8) * 3)
+        drift = round(math.sin(phase * math.tau + index * .8) * (3, 3, 6, 6, 8)[index])
         sprite = cloud(width, height, seed, colors)
         image.paste(sprite, (x + drift, y), sprite)
 
@@ -89,12 +94,12 @@ def sunset(frame):
     # The reflection breaks into gently moving horizontal gold ripples.
     for y in range(104, 144):
         width = 29 + (y - 104) * 1.7
-        offset = math.sin(y * .78 + phase * math.tau * 2) * 5
+        offset = math.sin(y * .78 + phase * math.tau * 6) * 5
         left, right = round(sx - width + offset), round(sx + width + offset)
         color = (255, 223, 132) if y % 4 < 2 else (255, 194, 106)
         d.line((left, y, right, y), fill=color)
         if y % 3 == 0:
-            gap = round(sx + math.sin(y * .9 - phase * math.tau * 2) * width)
+            gap = round(sx + math.sin(y * .9 - phase * math.tau * 5) * width)
             d.line((gap, y, gap + 12, y), fill=(248, 159, 80))
     for index in range(21):
         x = (index * 37 + 11) % WIDTH
@@ -104,18 +109,18 @@ def sunset(frame):
 
     # A restrained lens-glare accent, kept in the same warm pixel palette.
     for x, y, radius in ((251, 72, 3), (268, 89, 5)):
-        color = mix((249, 160, 81), (255, 206, 126), .25 + glow * .22)
+        color = mix((249, 160, 81), (255, 225, 154), .55 + glow * .25)
         d.ellipse((x - radius, y - radius, x + radius, y + radius), outline=color)
-    glint = round(2 + glow * 2)
+    glint = round(3 + glow * 3)
     d.line((sx - glint, 116, sx + glint, 116), fill=(255, 241, 174))
     d.line((sx, 115, sx, 117), fill=(255, 241, 174))
 
-    # Low silhouetted banks frame the water; reeds sway by only a pixel or two.
+    # Low silhouetted banks frame the water; reeds have gentle cyclical sway.
     ink = (66, 49, 67)
     d.polygon(((0, 119), (32, 120), (57, 128), (89, 126), (113, 137), (155, 144), (0, 144)), fill=ink)
     d.polygon(((416, 117), (385, 120), (363, 126), (343, 127), (319, 136), (280, 144), (416, 144)), fill=ink)
     for index, (x, base, height) in enumerate(((23, 126, 45), (50, 132, 27), (85, 137, 33), (332, 141, 66), (355, 134, 48), (391, 127, 36))):
-        lean = (-12 if index > 2 else 6) + math.sin(phase * math.tau + index) * 1.5
+        lean = (-12 if index > 2 else 6) + math.sin(phase * math.tau * 3 + index) * 2.5
         stem = [(round(x + lean * t / height), base - t) for t in range(height)]
         d.line(stem, fill=ink)
         for step in range(7, height - 3, 8):
@@ -127,4 +132,13 @@ def sunset(frame):
         x = rng.randrange(WIDTH)
         y = 141 if 120 < x < 290 else 128 + rng.randrange(12)
         d.line((x, 144, x - 2, y), fill=ink)
+
+    # One crossing per loop; all three birds are outside the frame at wraparound.
+    lead_x = round(-20 + ((phase + .18) % 1) * (WIDTH + 40))
+    lead_y = 41 + round(math.sin(phase * math.tau) * 3)
+    flap_up = math.sin(phase * math.tau * 30) > 1e-9
+    for dx, dy in ((0, 0), (-9, -6), (-17, 2)):
+        x, y = lead_x + dx, lead_y + dy
+        wing_y = y if flap_up else y + 2
+        d.line((x - 3, wing_y, x, y + 1, x + 3, wing_y), fill=ink)
     return image.resize((WIDTH * SCALE, HEIGHT * SCALE), Image.Resampling.NEAREST)

@@ -28,7 +28,7 @@ def mix(a, b, t):
     return tuple(round(x + (y - x) * t) for x, y in zip(a, b))
 
 
-def puffer(colors, beat: float, blink: bool = False) -> Image.Image:
+def puffer(colors, beat: float, blink: bool = False, inflate: int = 0) -> Image.Image:
     """Fuller 64x52 silhouette, shaded belly, blue fan tail, big eye, pink lips."""
     body, shadow, light, fin = colors
     ink = mix(shadow, (4, 29, 57), .55)
@@ -78,6 +78,12 @@ def puffer(colors, beat: float, blink: bool = False) -> Image.Image:
     d.line((60, 33, 63, 33), fill=(255, 173, 180))
     d.polygon(((23, 27), (15, 24 + flap), (16, 32), (25, 33)), fill=fin)
     d.line((18, 28, 22, 30), fill=body, width=2)
+    if inflate:
+        expanded = Image.new("RGBA", (64 + inflate, 52 + inflate))
+        expanded.paste(sprite.crop((0, 0, 15, 52)), (0, inflate // 2))
+        body = sprite.crop((15, 0, 64, 52)).resize((49 + inflate, 52 + inflate), Image.Resampling.NEAREST)
+        expanded.paste(body, (15, 0))
+        return expanded
     return sprite
 
 
@@ -156,12 +162,22 @@ def swimmer_pose(index: int, phase: float):
     return x, y, direction
 
 
+# One gentle ten-frame inflation at the first school/puffer crossing.
+PUFFER_INFLATE_FRAME = min(
+    range(REEF_FRAMES // 2),
+    key=lambda frame: abs(swimmer_pose(0, frame / REEF_FRAMES)[0] - swimmer_pose(2, frame / REEF_FRAMES)[0]),
+)
+INFLATION_PULSE = (1, 2, 3, 4, 4, 4, 4, 3, 2, 1)
+
+
 def draw_swimmer(image, index: int, phase: float, offset=(0, 0), size=.84):
     x, y, direction = swimmer_pose(index, phase)
     x, y = x + offset[0], y + offset[1]
     blink = (phase + .13 + index * .21) % 1 < .009
-    beat = phase * math.tau * 14
-    sprite = (puffer(FISH_PALETTES[0], beat, blink) if index == 0 else
+    beat = phase * math.tau * (32, 40, 48, 40)[index]
+    pulse_frame = (round(phase * REEF_FRAMES) - PUFFER_INFLATE_FRAME + 5) % REEF_FRAMES
+    inflate = INFLATION_PULSE[pulse_frame] if pulse_frame < len(INFLATION_PULSE) else 0
+    sprite = (puffer(FISH_PALETTES[0], beat, blink, inflate) if index == 0 else
               striped_fish(beat) if index == 1 else
               tetra(beat) if index == 2 else clownfish(beat))
     if direction < 0:
@@ -170,9 +186,9 @@ def draw_swimmer(image, index: int, phase: float, offset=(0, 0), size=.84):
     image.paste(sprite, (round(x - sprite.width / 2), round(y - sprite.height / 2)), sprite)
 
 
-def kelp(draw, x, base, height, phase, palette, seed=0):
+def kelp(draw, x, base, height, phase, palette, seed=0, *, cycles=1, amplitude=4):
     dark, middle, light = palette
-    sway = math.sin(phase * math.tau + seed) * 4
+    sway = math.sin(phase * math.tau * cycles + seed) * amplitude
     stem = []
     for step in range(height):
         px = x + round(math.sin(step * .11 + seed) * sway * step / height)
@@ -263,11 +279,12 @@ def walking_crab(draw, phase):
     x, y = crab_pose(phase)
     x = round(x)
     beat = phase * math.tau * 18
+    leg_speed = abs(math.cos(phase * math.tau))
     dark, red, light = (113, 48, 51), (219, 91, 64), (255, 156, 101)
     draw.ellipse((x - 16, y - 1, x + 16, y + 4), fill=(106, 103, 84))
     for side in (-1, 1):
         for index in range(3):
-            step = round(math.sin(beat + index * math.pi * .7 + side) * 2)
+            step = round(math.sin(beat + index * math.pi * .7 + side) * 2 * leg_speed)
             root = (x + side * 7, y - 5 + index)
             knee = (x + side * (13 + index), y - 4 + index + step)
             foot = (x + side * (16 + index), y + 1 + step)
@@ -290,7 +307,7 @@ def walking_crab(draw, phase):
 
 
 def aquarium(frame: int) -> Image.Image:
-    phase = frame / REEF_FRAMES
+    phase = (frame % REEF_FRAMES) / REEF_FRAMES
     image = Image.new("RGB", (WIDTH, HEIGHT))
     d = ImageDraw.Draw(image)
     # Open water: depth gradient and slanted sunbeams, no glass walls/waterline.
@@ -303,7 +320,7 @@ def aquarium(frame: int) -> Image.Image:
     # A distant reef ridge and small silhouettes establish depth behind the fish.
     d.polygon(((0, 151), (36, 139), (62, 148), (111, 135), (154, 144), (211, 129), (251, 141), (310, 134), (363, 141), (416, 129), (416, 186), (0, 186)), fill=(12, 48, 64))
     for index, x in enumerate((15, 60, 157, 214, 283, 370, 410)):
-        kelp(d, x, 164, 39 + index % 3 * 9, phase, ((15, 55, 69), (20, 76, 82), (26, 91, 91)), index)
+        kelp(d, x, 164, 39 + index % 3 * 9, phase, ((15, 55, 69), (20, 76, 82), (26, 91, 91)), index, cycles=3)
     for index in range(8):
         x = (index * 56 + phase * (WIDTH + 20)) % (WIDTH + 20) - 10
         y = 43 + index % 3 * 13 + math.sin(phase * math.tau + index) * 3
@@ -332,13 +349,19 @@ def aquarium(frame: int) -> Image.Image:
         d.line((x, y, x + length, y - 1), fill=(189, 168, 123))
         d.line((x + 2, y + 2, x + length - 3, y + 1), fill=(102, 105, 87))
 
+    # Sparse caustic flecks share the existing sand palette and complete four cycles.
+    for x, y in ((70, 182), (89, 186), (100, 189), (158, 184), (173, 181), (188, 188),
+                 (217, 190), (233, 182), (244, 187), (262, 189), (283, 183), (300, 191)):
+        tone = (176, 158, 115) if math.sin(x * .2 + phase * math.tau * 4) >= 0 else (156, 142, 107)
+        d.point((x, y), fill=tone)
+
     # Foreground props overlap passing fish: coral thickets, sponges, and a
     # weathered anchor/chain, instead of four isolated project display stands.
     coral(d, 34, 180, .95)
     coral(d, 373, 179, .74)
     coral(d, 325, 187, .47, blue=True)
-    for index in range(6):
-        px, py = 105 + index * 4, 82 + index * 4
+    for py in range(-6, 103, 6):
+        px = round(165 - 40 * max(0, py) / 102)
         d.ellipse((px - 2, py, px + 3, py + 7), outline=(79, 119, 129), width=2)
         d.point((px - 1, py + 1), fill=(129, 164, 165))
     anchor(image, 118, 185)
@@ -353,7 +376,7 @@ def aquarium(frame: int) -> Image.Image:
     sponges(d, 45, 179, 1.15)
     sponges(d, 353, 179, .9)
     for index, (x, height) in enumerate(((4, 72), (15, 57), (149, 35), (287, 32), (400, 67), (414, 78))):
-        kelp(d, x, 188, height, phase, ((10, 78, 84), (22, 140, 134), (94, 200, 167)), index + 2)
+        kelp(d, x, 188, height, phase, ((10, 78, 84), (22, 140, 134), (94, 200, 167)), index + 2, cycles=4, amplitude=6)
     # Two small shells with pearl highlights.
     for x, y in ((162, 184), (303, 186)):
         d.pieslice((x - 7, y - 8, x + 7, y + 2), 180, 360, fill=(200, 157, 136))
@@ -362,15 +385,24 @@ def aquarium(frame: int) -> Image.Image:
 
     walking_crab(d, phase)
 
-    # Current-borne particles and bubbles at different depths.
+    # Eight bubbles come from fixed props; twelve retain their ambient paths.
+    emitters = ((120, 104), (210, 170), (353, 160))
     for index in range(20):
         travel = (phase * 2 + index / 20) % 1
-        x = 16 + index * 47 % 390 + round(math.sin(travel * math.tau + index) * 5)
-        y = round(190 - travel * 180)
-        if 25 < y < 167:
+        wobble = round(math.sin(travel * math.tau + index) * 5)
+        if index < 8:
+            origin_x, origin_y = emitters[index % len(emitters)]
+            x = origin_x + wobble
+            y = round(origin_y - travel * (origin_y - 10))
+            visible = 25 < y <= origin_y
+        else:
+            x = 16 + index * 47 % 390 + wobble
+            y = round(190 - travel * 180)
+            visible = 25 < y < 167
+        if visible:
             r = 1 if index % 4 else 2
             d.ellipse((x - r, y - r, x + r, y + r), outline=(68, 139, 157))
-    text(d, "THE PROJECT REEF", 12, 9, (167, 205, 216))
+    text(d, "THE PROJECT REEF", 12, 9, (167, 205, 216), scale=2)
     d.rectangle((0, 195, WIDTH, HEIGHT), fill=(7, 26, 43))
     for index, name in enumerate(("G.U.A.R.D.", "GITREAL", "TEAMTRUTH", "EXAMHUB")):
         x = 14 + index * 103

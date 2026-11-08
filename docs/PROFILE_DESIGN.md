@@ -6,11 +6,11 @@ The reading order is a wide sunset-lake cover, centered typing introduction and 
 
 The introduction reads **Hey, I am electrifiedchan**. Its local SVG types character by character in a nine-second loop and holds the complete line for over three seconds. Text colors adapt to light/dark mode; reduced motion shows the full text with no cursor animation. The heading's image includes the complete introduction as alt text.
 
-The solar system stays full-size at 832 pixels wide in the skills section. Its CH sun has a filled, moving solar surface and a soft circular corona, with six orbiting tech planets, a ringed planet, an asteroid belt, stars, and a comet. The earlier black center, protruding decorations, and “PIXEL ORBITS” label have been removed. Its 21.6-second loop is hand-built pixel art. Planet sizes, speeds, and positions are decorative; they do not represent repository activity or language percentages.
+The solar system stays full-size at 832 pixels wide in the skills section. Its CH sun has a moving surface and circular corona. All six planets complete one revolution per 21.6-second loop. The asteroid belt uses `Random(11)`, jittered positions, two shades, and small rock silhouettes. The comet enters and leaves beyond the frame during phase .30–.62 with a ramped trail. Planet sizes and highlights provide depth cues. These visuals are decorative, not repository statistics.
 
 The README uses repository-hosted images, so its appearance does not depend on a badge or animation service. Every scene has a `<picture>` element that selects its matching `*-static.png` for browsers that support the reduced-motion media preference; GIFs are the default.
 
-This animates the logo **inside the profile README**. Your GitHub account's sidebar avatar is controlled separately in account settings; uploading this GIF there is not a reliable way to get an animated account avatar.
+The CH mark is rendered into the solar scene from `assets/avatar-source.png`; that PNG remains a required input. The unused standalone logo GIF, still PNG, and generator have been removed. The account's sidebar avatar is a separate GitHub setting.
 
 ## GitSkins inspiration
 
@@ -24,7 +24,7 @@ This combines those ideas with the profile's earlier **Project / What it does / 
 
 ## Sunset and reef references
 
-- **[Sunset-lake pixel-art reference on GIPHY](https://giphy.com/gifs/xWMPYx55WNhX136T0V)** — warm orange clouds, a golden sun, a lake reflection, and dark foreground reeds. The original wide recreation adds subtle warm lens glare, cloud drift, and shifting water glints. This replaces the night city in the README.
+- **[Sunset-lake pixel-art reference on GIPHY](https://giphy.com/gifs/xWMPYx55WNhX136T0V)** — warm orange clouds, a golden sun, a lake reflection, and dark foreground reeds. The wide recreation adds visible warm glare, cloud parallax, shifting reflections, and a three-bird flock.
 - **[Blue pixel puffer-fish reference on Pinterest](https://in.pinterest.com/pin/781022760377747642/)** — the reference for round bodies, oversized eyes, white bellies, blue fins, and pink lips. The aquarium uses newly drawn sprites with project-specific palettes.
 - **[Coral and aquatic plants reference on Pinterest](https://in.pinterest.com/pin/575334921160802851/)** — the reference for branching red coral, hollow purple tube sponges, turquoise foliage, and a golden starfish. A large original anchor and chain, shells, and a broken wooden hull complete the seabed.
 
@@ -34,7 +34,33 @@ There are four distinct fish designs: a round blue puffer, a tall purple striped
 
 Fish travel across the full image and continue past its edges. An 84-source-pixel margin ensures that each sprite is entirely off-screen before its next crossing begins. They enter from both sides, with no visible turning, rotation, squeezing, or bouncing. TeamTruth's school shares a route with slight delays. A red crab walks sideways through the middle of the sandy foreground with alternating feet and articulated pincers. Foreground plants and props can occlude passing fish. All behavior is decorative, without invented metrics.
 
+Fin rates are 32/40/48/40 cycles per loop. Kelp uses three background cycles and four foreground cycles, with stronger foreground sway. Crab leg amplitude follows its sideways speed. Eight bubbles rise from fixed props. The chain runs from the top edge to the anchor ring. The puffer briefly inflates when the school passes, and sparse four-cycle caustic flecks animate the sand. Titles use scale 2; a native HTML text legend beneath the reef remains readable on phones.
+
 The sunset has 120 frames and loops in 14.4 seconds at 832 × 288. The reef has 240 frames and loops in 28.8 seconds at 832 × 416. All three active scenes use 120 ms per frame, making playback about 17% slower than the original 100 ms timing. Both use two-times nearest-neighbor enlargement for the same pixel scale as the solar system. The build entry point is `scripts/build_pixel_worlds.py`; the cover is in `scripts/sunset_scene.py` and the reef's scene, sprites, props, and motion live in `scripts/reef_scene.py`.
+
+## Current build measurements
+
+All frames were decoded and compared with fresh RGB renders using Pillow 12.3.0. A changed pixel means at least one RGB channel differs. Palette error is the per-pixel maximum absolute channel difference on the 0–255 scale, aggregated over every frame.
+
+| Scene | Frames | Palette samples / colors | GIF KiB | PNG KiB | p99.9 palette error |
+| --- | ---: | --- | ---: | ---: | ---: |
+| Sunset | 120 | 4 / 128 | 380.26 | 10.33 | 6 |
+| Solar system | 180 | 4 / 128 | 677.22 | 8.28 | 4 |
+| Reef | 240 | 16 / 192 | 2031.69 | 23.67 | 6 |
+
+| Scene | Last → first changed px | Median consecutive changed px | Consecutive range |
+| --- | ---: | ---: | --- |
+| Sunset | 1,724 | 3,912 | 1,460–9,292 |
+| Solar system | 5,412 | 5,792 | 5,180–6,320 |
+| Reef | 20,328 | 15,448 | 4,912–20,900 |
+
+Every seam is within its consecutive-frame range; every GIF is below 2 MiB. The reef has 16.31 KiB of remaining budget. All periodic motion uses integer cycle counts, and source renders at the loop endpoints are pixel-identical. Static PNGs match frame zero of the RGB render. Recheck measurements after any future artwork edit.
+
+## Deferred features
+
+The project CD-player idea is saved in [FUTURE_IDEAS.md](FUTURE_IDEAS.md). Interactive drag/drop would use a self-contained GitHub Pages page linked from the README.
+
+Animated WebP is not enabled. Before committing WebP sources to this profile, test a lossless export in a scratch public repository in light mode, dark mode, and on mobile. If GitHub does not animate it, retain GIFs. The published `<picture>` elements currently select reduced-motion PNGs first and otherwise use GIFs.
 
 ## Other animation options researched
 
@@ -43,7 +69,6 @@ Reviewed on 8 November 2026 using the projects' own documentation.
 | Option | What it adds | Fit for this profile |
 | --- | --- | --- |
 | **Pixel solar-system GIF — implemented** | Your monogram as the central sun, six orbiting tech worlds, stars, and a comet. | The current visual signature; combines space and pixel-art ideas. |
-| **Standalone avatar GIF — retained** | Your existing logo with a restrained animated ring. Stored in this repository. | An alternate small asset for reuse. |
 | [README Typing SVG](https://github.com/DenverCoder1/readme-typing-svg) | A typewriter line with configurable text, timing, and color. [Live editor](https://readme-typing-svg.demolab.com/demo/). | Good if you later want a changing role line. Keep it to one short line and consider reducing the logo motion. |
 | [Platane/snk](https://github.com/Platane/snk) | An animated snake that follows your real contribution graph. Supports SVG, GIF, and theme palettes. | A playful footer option. Requires generation and publication of your own graph, usually through GitHub Actions. |
 | [Capsule Render](https://github.com/kyechan99/capsule-render) | Configurable SVG headers, waves, gradients, and text animation. | Useful for a banner-led redesign. The custom logo already provides a stronger personal signature here. |

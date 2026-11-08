@@ -17,13 +17,13 @@ from sunset_scene import COVER_FRAMES, sunset
 FRAMES, FRAME_MS = 120, 120
 
 
-def export(name: str, renderer, count: int = FRAMES) -> None:
+def export(name: str, renderer, count: int = FRAMES, *, samples: int = 4, colors: int = 128) -> None:
     frames = [renderer(frame) for frame in range(count)]
     width, height = frames[0].size
-    samples = Image.new("RGB", (width * 4, height))
-    for index in range(4):
-        samples.paste(frames[index * count // 4], (index * width, 0))
-    palette = samples.quantize(colors=128, method=Image.Quantize.MEDIANCUT)
+    sample_sheet = Image.new("RGB", (width * samples, height))
+    for index in range(samples):
+        sample_sheet.paste(frames[index * count // samples], (index * width, 0))
+    palette = sample_sheet.quantize(colors=colors, method=Image.Quantize.MEDIANCUT)
     indexed = [frame.quantize(palette=palette, dither=Image.Dither.NONE) for frame in frames]
     output = ASSETS / f"{name}.gif"
     indexed[0].save(output, save_all=True, append_images=indexed[1:], duration=FRAME_MS,
@@ -38,6 +38,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     ASSETS.mkdir(exist_ok=True)
     if args.scene in ("all", "cover"):
-        export("sunset-cover", sunset, COVER_FRAMES)
+        export("sunset-cover", sunset, COVER_FRAMES, samples=4, colors=128)
     if args.scene in ("all", "aquarium"):
-        export("project-aquarium", aquarium, REEF_FRAMES)
+        export("project-aquarium", aquarium, REEF_FRAMES, samples=16, colors=192)

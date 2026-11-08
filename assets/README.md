@@ -4,76 +4,61 @@
 
 `intro-typing.svg` types **Hey, I am electrifiedchan** in a nine-second loop, holds the completed line for over three seconds, then resets. It adapts its text color to light/dark mode and shows the complete line without a cursor when reduced motion is requested. The SVG is self-contained and uses no external typing service.
 
-## Pixel solar system
+## Built scene assets
 
-- `solar-system.gif` — original 832 × 380 pixel-art scene, with a seamless 21.6-second loop.
-- `solar-system-static.png` — still version selected for reduced-motion viewing.
-- `linkedin.svg`, `github.svg`, `email.svg` — linked social badges with real brand icons.
-- `stack-web.svg`, `stack-data.svg` — two locally cached rows of technology logos.
+Each GIF has a matching `<name>-static.png` selected for reduced-motion viewing. All scenes use **120 ms per frame**, two-times nearest-neighbor enlargement, and integer animation cycles.
 
-The existing monogram is the central sun. Six colorful planets represent Python, TypeScript, JavaScript, React, FastAPI, and Supabase. The scene includes a ringed planet, an asteroid belt, twinkling stars, and a comet. Planet sizes and orbits are artistic choices, not live GitHub statistics.
+| Asset | Dimensions | Frames | Loop | Palette samples / colors | GIF KiB | Static PNG KiB |
+| --- | --- | ---: | ---: | --- | ---: | ---: |
+| `sunset-cover.gif` | 832 × 288 | 120 | 14.4 s | 4 / 128 | 380.26 | 10.33 |
+| `solar-system.gif` | 832 × 380 | 180 | 21.6 s | 4 / 128 | 677.22 | 8.28 |
+| `project-aquarium.gif` | 832 × 416 | 240 | 28.8 s | 16 / 192 | 2031.69 | 23.67 |
+
+Sizes use 1 KiB = 1024 bytes. All GIFs fit the 2 MiB / 2048 KiB per-file budget; the reef has 16.31 KiB of headroom. Rebuilding after future art edits may change these sizes.
+
+### Sunset cover
+
+Orange clouds with depth-dependent drift, six-cycle reflection ripples, five-cycle opposing gaps, three-cycle reeds, a two-cycle corona pulse, warm glare, and a three-bird flock. The birds cross once per loop and flap at 30 cycles per loop.
+
+### Solar-system skills scene
+
+The CH mark is rendered from the checked-in `avatar-source.png`, which remains a required build input. All six planets complete one revolution per loop. An irregular, seeded asteroid belt rotates with them; a comet crosses from outside the frame with a growing/shrinking trail. Near/far planets change size and highlight tint. Sun convection uses four/six cycles, the corona uses six, and stars use one/two/three. The scene title is drawn at scale 2.
+
+### Project reef
+
+| Project | Fish | Fin cycles per loop |
+| --- | --- | ---: |
+| G.U.A.R.D. | Blue puffer | 32 |
+| GitReal | Purple striped reef fish | 40 |
+| TeamTruth | Mint tetra school | 48 |
+| ExamHub | Orange clownfish | 40 |
+
+Fish enter and exit beyond either edge. Background kelp uses three cycles at amplitude 4; foreground kelp uses four at amplitude 6. Crab steps settle at turnarounds. Eight bubbles originate at the anchor, hull, or sponges; twelve follow ambient paths. The chain extends from the top edge to the anchor ring.
+
+The puffer inflates by up to four source pixels for ten frames when the school first passes it, centered on frame 58. Twelve subtle caustic flecks use existing sand colors and complete four cycles. A real-text legend below the image complements the scale-2 title and the image's small color key.
+
+## Rebuilding
+
+Run from the repository root with Python 3.10+ and **Pillow==12.3.0**:
 
 ```sh
 python -m pip install -r scripts/requirements.txt
+python scripts/build_pixel_worlds.py --scene cover
+python scripts/build_pixel_worlds.py --scene aquarium
 python scripts/build_profile_art.py
 ```
 
-The script reuses the saved avatar and icon strips. Add `--refresh-icons` to fetch new icon strips from Skill Icons. The scene is drawn at 416 × 190 and enlarged with nearest-neighbor scaling for crisp pixel edges.
+The normal build reuses local avatar and icon inputs. `--refresh-icons` is an optional manual refresh of the cached Skill Icons strips. Visitors need no Python runtime or animation service.
 
-The solar system is displayed at full width in the **Tech stack** section. The sun now has a filled, warm solar surface with flowing convection, a circular corona, and a transparent CH monogram. Disconnected ornamental specks are removed from the tiny monogram mask; no pointed rays or orbiting sparks are drawn. The “PIXEL ORBITS” label has been removed.
+## Social and technology icons
 
-## Sunset cover and project aquarium
+- `linkedin.svg`, `github.svg`, `email.svg` — local branded social buttons.
+- `stack-web.svg`, `stack-data.svg` — locally cached technology-logo strips.
+- Social paths: [Simple Icons v11.15.0](https://github.com/simple-icons/simple-icons/tree/11.15.0), distributed under [CC0](https://github.com/simple-icons/simple-icons/blob/11.15.0/LICENSE.md).
+- Tech tiles: [Skill Icons](https://github.com/tandpfun/skill-icons), with the included [MIT license](SKILL_ICONS_LICENSE.txt).
 
-- `sunset-cover.gif` / `sunset-cover-static.png` — 832 × 288 extended sunset-lake cover; warm clouds, golden sunlight, soft glare, moving reflections, and silhouetted reeds.
-- `project-aquarium.gif` / `project-aquarium-static.png` — 832 × 416 open-water reef for the footer, with four fish silhouettes, a sideways-walking crab, a weathered anchor and chain, red coral, purple tube sponges, kelp, starfish, shells, and a sunken hull.
+## WebP and future work
 
-The sunset loops in 14.4 seconds; the reef loops in 28.8 seconds. All three active scenes use 120 ms per frame for a slightly calmer pace. Both are generated locally:
+The published README uses GIFs and static PNGs. Animated WebP is not generated or selected: it must first pass a scratch public GitHub repository test in light mode, dark mode, and on mobile. The interactive project CD player is also deferred. See [future ideas](../docs/FUTURE_IDEAS.md).
 
-```sh
-python scripts/build_pixel_worlds.py
-```
-
-To rebuild only the reef:
-
-```sh
-python scripts/build_pixel_worlds.py --scene aquarium
-```
-
-The reef's project colors are:
-
-| Project | Fish |
-| --- | --- |
-| G.U.A.R.D. | A large blue puffer. |
-| GitReal | A tall-finned purple striped reef fish. |
-| TeamTruth | A small school of slender mint tetras. |
-| ExamHub | An orange clownfish with dark-edged white bands. |
-
-The footer labels form a color legend, not fixed fish stations. Fish cross the whole scene with small vertical drift, pass completely beyond either edge, then re-enter. Changes of direction happen only after the entire sprite is outside the frame; visible fish do not rotate, compress, or bounce at the border. The central crab scuttles left and right with alternating legs and moving pincers. Scene and sprite code lives in `scripts/reef_scene.py`; the cover is in `scripts/sunset_scene.py`. The mapping is decorative, not a live activity visualization. Reference links are recorded in [the design notes](../docs/PROFILE_DESIGN.md).
-
-### Icon sources
-
-- Social logo paths: [Simple Icons v11.15.0](https://github.com/simple-icons/simple-icons/tree/11.15.0), distributed under [CC0](https://github.com/simple-icons/simple-icons/blob/11.15.0/LICENSE.md). Brand names and marks belong to their respective owners.
-- Tech tiles: [Skill Icons](https://github.com/tandpfun/skill-icons), [MIT license](SKILL_ICONS_LICENSE.txt). Exact request URLs are in `scripts/build_profile_art.py`; these SVGs are stored locally so viewing the profile does not call the service.
-
-## Original standalone logo
-
-- `avatar-source.png` — snapshot of the existing public GitHub avatar, downloaded by the build script.
-- `logo-animated.gif` — standalone 320 × 320 logo animation, retained for reuse.
-- `logo-static.png` — still version for reduced-motion viewing and static use.
-
-The original monogram stays still while two electric-blue highlights travel around its border. The animation loops every six seconds. Transparent corners and a dark circular backing work with both light and dark GitHub themes.
-
-To rebuild from the saved source:
-
-```sh
-python -m pip install -r scripts/requirements.txt
-python scripts/build_logo.py
-```
-
-To download a fresh copy of the account avatar before rebuilding:
-
-```sh
-python scripts/build_logo.py --refresh-avatar
-```
-
-The profile uses the sunset cover, solar-system skills scene, and underwater reef. Run all commands from the repository root. Python 3.10+ is required. Commit the generated images along with the README; visitors do not need Python or a running service.
+See [the design notes](../docs/PROFILE_DESIGN.md) for reference links and validation measurements.

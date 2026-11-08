@@ -2,7 +2,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="./assets/sunset-cover-static.png" />
-    <img src="./assets/sunset-cover.gif" width="832" alt="A wide pixel-art sunset over a lake, with orange clouds, a golden sun and soft glare, shimmering water reflections, and silhouetted reeds" />
+    <img src="./assets/sunset-cover.gif" width="832" alt="A wide pixel-art sunset over a lake, with drifting orange clouds, a golden sun and warm glare, shimmering reflections, swaying reeds, and three birds crossing the sky" />
   </picture>
 </p>
 
@@ -72,4 +72,8 @@ I'm a Computer Science student specializing in Data Science. My projects bring t
     <source media="(prefers-reduced-motion: reduce)" srcset="./assets/project-aquarium-static.png" />
     <img src="./assets/project-aquarium.gif" width="832" alt="The project reef: a blue puffer, purple striped reef fish, mint tetra school, and orange clownfish swim into and out of the scene from both sides. A red crab walks sideways across the central sand among an anchor, coral, sponges, seaweed, starfish, shells, and a sunken hull." />
   </picture>
+</p>
+
+<p align="center">
+  <sub>Blue puffer = G.U.A.R.D. · Purple = GitReal · Mint school = TeamTruth · Orange = ExamHub</sub>
 </p>

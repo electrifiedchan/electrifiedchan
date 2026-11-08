@@ -1,37 +1,65 @@
-# Hi there, I'm Chandan! 👋
+<!-- Animation source, alternatives, and maintenance: docs/PROFILE_DESIGN.md -->
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/logo-static.png" />
+    <img src="./assets/logo-animated.gif" width="152" height="152" alt="Chandan's monogram surrounded by an electric-blue ring" />
+  </picture>
+</p>
 
-### 👨‍💻 Data Science Student | Full Stack Developer
+<h1 align="center">Hi, I'm Chandan.</h1>
 
-I am a Computer Science student (Data Science) focused on building efficient software. I bridge the gap between complex backend logic and clean user interfaces.
+<p align="center">
+  <strong>Full-stack development · Applied AI · Data science</strong>
+</p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/chandan-m-81977032b/">LinkedIn</a> ·
+  <a href="mailto:chandankushal1520@gmail.com">Email</a> ·
+  <a href="https://github.com/electrifiedchan?tab=repositories">Repositories</a>
+</p>
+
+I'm a Computer Science student specializing in Data Science. I build software that connects useful AI, practical backend logic, and clean interfaces — from interview coaching to exam logistics.
+
+## Selected projects
+
+### [G.U.A.R.D.](https://github.com/electrifiedchan/guard-edge-ai-proctoring)
+
+An AI interview coach with resume-aware questions, on-device gaze and head-pose analysis, live feedback, and session replay.
+
+`Next.js` `FastAPI` `MediaPipe` `YOLOv8`
+
+### [GitReal](https://github.com/electrifiedchan/Git_real)
+
+Cross-checks resume claims against actual GitHub code, with AI critique, resume rewriting, and voice interviews.
+
+`Next.js` `TypeScript` `FastAPI` `Gemini`
+
+### [TeamTruth](https://github.com/electrifiedchan/TeamTruth)
+
+A team-accountability MVP that compares project updates with past commitments using persistent AI memory and contradiction detection.
+
+`React` `Node.js` `Groq` `Hindsight`
+
+### [ExamHub](https://github.com/electrifiedchan/exam-hub-seating-system)
+
+Automates exam seating from student CSVs and room capacities, with seat lookup and printable attendance sheets.
+
+`React` `Flask` `Pandas` `SQLite`
+
+<details>
+  <summary>More projects</summary>
+
+- **[Namma Yatri](https://github.com/electrifiedchan/namma_yathri)** — A ride-hailing architecture study with demand heatmaps and driver gamification. `React Native` · `Supabase`
+- **[VTU Performance Analyzer](https://github.com/electrifiedchan/vtu-performance-analyzer)** — Result-PDF parsing, SGPA/CGPA analytics, and AI study guidance. `React` · `Flask` · `scikit-learn`
+
+</details>
+
+## Tools I build with
+
+**Languages** · Python, TypeScript, JavaScript<br />
+**Web & APIs** · React, Next.js, React Native, FastAPI, Flask, Node.js<br />
+**Data & AI** · Pandas, scikit-learn, MediaPipe, SQLite, Supabase
 
 ---
 
-### 🛠️ Tech Stack
-
-<div align="left">
-  <img src="https://skillicons.dev/icons?i=python,react,flask,mongodb,mysql,js,html,css,git,vscode&perline=10" />
-</div>
-
----
-
-### 🚀 Featured Projects
-
-| Project | Description | Tech |
-| :--- | :--- | :--- |
-| **[ExamHub System](https://github.com/electrifiedchan/exam-hub-seating-system)** | Smart exam seating arrangement system that automates room allocation. | `React` `Flask` |
-| **[VTU Analyzer](https://github.com/electrifiedchan/vtu-performance-analyzer)** | A comprehensive SGPA/CGPA analyzer tailored for VTU engineering students. | `React` `Node.js` |
-| **[GitReal V2](https://github.com/electrifiedchan/Git_real)** | An advanced version control project demonstrating core Git architecture. | `Git` `System` |
-| **[Namma Yathri](https://github.com/electrifiedchan/namma_yathri)** | A high-fidelity UI clone of the Namma Yathri ride-booking application. | `Frontend` `UI/UX` |
-
----
-
-### 🌐 Socials & Contact
-
-<div align="left">
-  <a href="https://www.linkedin.com/in/chandan-m-81977032b/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
-  </a>
-  <a href="mailto:chandankushal1520@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-Contact_Me-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-  </a>
-</div>
+Have a project in mind? [Let's connect.](mailto:chandankushal1520@gmail.com)

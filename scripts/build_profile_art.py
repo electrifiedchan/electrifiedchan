@@ -171,7 +171,7 @@ def scene(logo: Image.Image, frame: int) -> Image.Image:
     draw.line((1, 19, WIDTH - 2, 19), fill=(34, 48, 71))
     for x, color in ((11, (233, 122, 139)), (19, (236, 193, 114)), (27, (106, 210, 166))):
         draw.rectangle((x, 8, x + 3, 11), fill=color)
-    text(draw, "ELECTRIFIEDCHAN / DEV UNIVERSE", 41, 5, (177, 198, 222), scale=2)
+    text(draw, "ELECTRIFIEDCHAN / DEV UNIVERSE", 41, 7, (177, 198, 222))
     draw.line((12, 175, WIDTH - 13, 175), fill=(27, 41, 61))
     for index, (name, _, _, _, colors, *_rest) in enumerate(WORLDS):
         x = 16 + index * 66

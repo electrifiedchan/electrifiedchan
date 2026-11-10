@@ -10,7 +10,7 @@ A retro deck with four draggable project CDs: G.U.A.R.D., GitReal, TeamTruth, an
 - Build with plain HTML, CSS, JavaScript, and local artwork, using relative paths.
 - Host the interactive page on GitHub Pages and link it from an animated README preview. GitHub READMEs cannot execute the drag-and-drop JavaScript themselves.
 
-This is a future idea, not part of the current implementation.
+The README now displays the supplied automatic `assets/record-rack.svg` animation. The drag-and-drop controls described here remain a future idea for a separate interactive page.
 
 ## Lossless animated WebP
 

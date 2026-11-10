@@ -2,7 +2,9 @@
 
 ## Direction
 
-The reading order is a wide sunset-lake cover, centered typing introduction and social badges, four featured projects in a **three-column table**, a full-width solar system in **Tech stack**, tech-logo tiles, contact, and a project reef at the bottom. Additional projects fold into a details section. Warm orange and gold in the cover lead into the sun and the cooler underwater palette.
+The reading order is a wide sunset-lake cover, centered typing introduction and social badges, four featured projects in a **three-column table**, a full-width solar system in **Tech stack**, tech-logo tiles, contact, and the supplied animated record rack at the bottom. Additional projects fold into a details section.
+
+The footer directly embeds `assets/record-rack.svg`: a hand plays the four project records and the display types an introduction for each one. Its CSS handles reduced-motion viewing. The earlier aquarium and its fish legend have been replaced; reef build notes and measurements below describe archived artwork.
 
 The introduction reads **Hey, I am electrifiedchan**. Its local SVG types character by character in a 7.5-second loop and holds the complete line for 2.7 seconds. Explicit character positions and the cursor use the same 20-pixel grid. The cursor remains visible while typing/deleting and blinks only while paused. Text colors adapt to light/dark mode; reduced motion shows the full text with no cursor animation. The heading's image includes the complete introduction as alt text.
 
@@ -74,7 +76,7 @@ Reviewed on 8 November 2026 using the projects' own documentation.
 | [Platane/snk](https://github.com/Platane/snk) | An animated snake that follows your real contribution graph. Supports SVG, GIF, and theme palettes. | A playful footer option. Requires generation and publication of your own graph, usually through GitHub Actions. |
 | [Capsule Render](https://github.com/kyechan99/capsule-render) | Configurable SVG headers, waves, gradients, and text animation. | Useful for a banner-led redesign. The custom logo already provides a stronger personal signature here. |
 
-**Current composition:** the sunset establishes the mood at the top; the solar system illustrates the skills; the reef closes the page. Static social badges, tech logos, and readable project columns separate the three scenes.
+**Current composition:** the sunset establishes the mood at the top; the solar system illustrates the skills; the record rack presents the projects at the bottom. Static social badges, tech logos, and readable project columns separate the scenes.
 
 GitHub READMEs support images and a limited set of HTML elements. Treat animations as image assets rather than JavaScript widgets or page-level CSS. Lottie/interactive canvas effects need to be exported to a suitable image format before embedding.
 

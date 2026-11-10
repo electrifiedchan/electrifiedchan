@@ -68,12 +68,5 @@ I'm a Computer Science student specializing in Data Science. My projects bring t
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/project-aquarium-static.png" />
-    <img src="./assets/project-aquarium.gif" width="832" alt="The project reef: a blue puffer, purple striped reef fish, mint tetra school, and orange clownfish swim into and out of the scene from both sides. A red crab walks sideways across the central sand among an anchor, coral, sponges, seaweed, starfish, shells, and a sunken hull." />
-  </picture>
-</p>
-
-<p align="center">
-  <sub>Blue puffer = G.U.A.R.D. · Purple = GitReal · Mint school = TeamTruth · Orange = ExamHub</sub>
+  <img src="./assets/record-rack.svg" width="832" alt="A hand plays records for G.U.A.R.D., GitReal, TeamTruth, and ExamHub on a retro turntable while each project's introduction appears on the display." />
 </p>

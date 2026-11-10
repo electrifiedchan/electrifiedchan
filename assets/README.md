@@ -4,9 +4,13 @@
 
 `intro-typing.svg` types **Hey, I am electrifiedchan** in a 7.5-second loop and holds the completed line for 2.7 seconds. The text, reveal boundary, and cursor share a fixed 20-pixel character grid. The cursor stays visible during typing/deletion and blinks only during the pause. The SVG adapts to light/dark mode, shows the complete line for reduced motion, and uses no external service.
 
-## Built scene assets
+## Record-rack footer
 
-Each GIF has a matching `<name>-static.png` selected for reduced-motion viewing. All scenes use **120 ms per frame**, two-times nearest-neighbor enlargement, and integer animation cycles.
+`record-rack.svg` is the supplied 832 × 500 animated turntable illustration used at the bottom of the README. A hand plays four project records in a 72-second sequence, with a typed introduction for each project. Its own reduced-motion styles show a static presentation. The SVG is used directly.
+
+## Raster scene assets
+
+Each GIF has a matching `<name>-static.png` for reduced-motion viewing. These raster scenes use **120 ms per frame**, two-times nearest-neighbor enlargement, and integer animation cycles. The reef assets below are archived; the README footer now displays the record rack.
 
 | Asset | Dimensions | Frames | Loop | Palette samples / colors | GIF KiB | Static PNG KiB |
 | --- | --- | ---: | ---: | --- | ---: | ---: |
@@ -24,7 +28,7 @@ Orange clouds with depth-dependent drift, six-cycle reflection ripples, five-cyc
 
 The CH mark is rendered from the checked-in `avatar-source.png`, which remains a required build input. The two innermost planets complete two revolutions per loop (10.8 seconds each); the outer four complete one (21.6 seconds). An irregular, seeded asteroid belt rotates once per loop. The comet has a gently twinkling four-point glare, completing eight sparkle cycles per loop, and a growing/shrinking trail. Near/far planets change size and highlight tint. Sun convection uses four/six cycles, the corona uses six, and stars use one/two/three. The scene title is drawn at scale 2.
 
-### Project reef
+### Project reef (archived)
 
 | Project | Fish | Fin cycles per loop |
 | --- | --- | ---: |

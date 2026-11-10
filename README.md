@@ -23,7 +23,7 @@
 
 I'm a Computer Science student specializing in Data Science. My projects bring together **AI, practical backend logic, and clean interfaces** — from interview coaching to exam logistics.
 
-## 🚀 Featured projects
+## <img src="./assets/icon-rocket.svg" width="24" height="24" alt="" /> Featured projects
 
 | Project | What it does | Stack |
 | :--- | :--- | :--- |
@@ -40,7 +40,7 @@ I'm a Computer Science student specializing in Data Science. My projects bring t
 
 </details>
 
-## 🧰 Tech stack
+## <img src="./assets/icon-wrench.svg" width="24" height="24" alt="" /> Tech stack
 
 <p align="center">
   <picture>

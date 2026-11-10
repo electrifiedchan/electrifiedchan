@@ -59,6 +59,7 @@ The normal build reuses local avatar and icon inputs. `--refresh-icons` is an op
 - `linkedin.svg`, `github.svg`, `email.svg` — local branded social buttons.
 - `stack-web.svg`, `stack-data.svg` — locally cached technology-logo strips.
 - Social paths: [Simple Icons v11.15.0](https://github.com/simple-icons/simple-icons/tree/11.15.0), distributed under [CC0](https://github.com/simple-icons/simple-icons/blob/11.15.0/LICENSE.md).
+- `icon-rocket.svg`, `icon-wrench.svg` — section heading icons, drawn from [Lucide](https://lucide.dev) (ISC license).
 - Tech tiles: [Skill Icons](https://github.com/tandpfun/skill-icons), with the included [MIT license](SKILL_ICONS_LICENSE.txt).
 
 ## WebP and future work

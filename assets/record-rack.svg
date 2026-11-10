@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 832 416" width="832" height="416" role="img" aria-labelledby="t d">
+<title id="t">The project rack</title>
+<desc id="d">A hand takes four project records out of a rack one at a time, places each on a turntable where its name lights up, then returns it: G.U.A.R.D., GitReal, TeamTruth and ExamHub.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1122"/><stop offset="1" stop-color="#161d36"/></linearGradient>
+  <radialGradient id="lamp" cx="736" cy="64" r="300" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffb35c" stop-opacity=".26"/><stop offset="1" stop-color="#ffb35c" stop-opacity="0"/></radialGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5439"/><stop offset="1" stop-color="#4e3425"/></linearGradient>
+  <linearGradient id="woodDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a281d"/><stop offset="1" stop-color="#281b14"/></linearGradient>
+  <linearGradient id="plinth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3250"/><stop offset="1" stop-color="#1a2038"/></linearGradient>
+  <filter id="glow" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="1.3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <style>text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'DejaVu Sans Mono',monospace}
+.hand{transform:translate(566px,-90px)}
+.arm{transform-origin:0 0;transform:rotate(15deg)}
+.ring,.spin{transform-origin:0 0}
+.lamp{transform-origin:736px 0}
+.idle,.notes{opacity:0}.name{opacity:0}.led{opacity:1}
+.tag{opacity:0;transform-box:fill-box;transform-origin:50% 50%}
+.name0{opacity:1}.tag0{opacity:1}
+.disc0{transform:translate(566px,258px)}
+.disc1{transform:translate(170px,258px)}
+.disc2{transform:translate(270px,258px)}
+.disc3{transform:translate(370px,258px)}
+@media (prefers-reduced-motion:no-preference){
+.hand{animation:hand 52s linear infinite}
+.arm{animation:arm 52s linear infinite}
+.ring{animation:ring 52s linear infinite}
+.idle{animation:idle 52s linear infinite}
+.notes{animation:notes 52s linear infinite}
+.led{animation:led 52s linear infinite}
+.lamp{animation:sway 6s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.4deg)}to{transform:rotate(1.4deg)}}
+.note{animation:float 2.8s ease-out infinite}.note.b{animation-delay:-.95s}.note.c{animation-delay:-1.85s}
+@keyframes float{0%{transform:translate(0,0) rotate(-8deg);opacity:0}15%{opacity:1}100%{transform:translate(30px,-92px) rotate(12deg);opacity:0}}
+.disc0{animation:disc0 52s linear infinite}
+.spin0{animation:spin0 52s linear infinite}
+.name0{animation:name0 52s linear infinite}
+.tag0{animation:tag0 52s linear infinite}
+.disc1{animation:disc1 52s linear infinite}
+.spin1{animation:spin1 52s linear infinite}
+.name1{animation:name1 52s linear infinite}
+.tag1{animation:tag1 52s linear infinite}
+.disc2{animation:disc2 52s linear infinite}
+.spin2{animation:spin2 52s linear infinite}
+.name2{animation:name2 52s linear infinite}
+.tag2{animation:tag2 52s linear infinite}
+.disc3{animation:disc3 52s linear infinite}
+.spin3{animation:spin3 52s linear infinite}
+.name3{animation:name3 52s linear infinite}
+.tag3{animation:tag3 52s linear infinite}
+}
+@keyframes hand{0%{transform:translate(70px,-90px);animation-timing-function:ease-in-out}1.3462%{transform:translate(70px,214px);animation-timing-function:linear}1.9231%{transform:translate(70px,214px);animation-timing-function:ease-in-out}3.6538%{transform:translate(70px,66px);animation-timing-function:ease-in-out}6.1538%{transform:translate(566px,66px);animation-timing-function:ease-in-out}7.5%{transform:translate(566px,214px);animation-timing-function:linear}8.0769%{transform:translate(566px,214px);animation-timing-function:ease-in-out}9.4231%{transform:translate(566px,-90px);animation-timing-function:linear}16.3462%{transform:translate(566px,-90px);animation-timing-function:ease-in-out}17.6923%{transform:translate(566px,214px);animation-timing-function:linear}18.2692%{transform:translate(566px,214px);animation-timing-function:ease-in-out}19.6154%{transform:translate(566px,66px);animation-timing-function:ease-in-out}21.5385%{transform:translate(70px,66px);animation-timing-function:ease-in-out}22.6923%{transform:translate(70px,214px);animation-timing-function:linear}23.0769%{transform:translate(70px,214px);animation-timing-function:ease-in-out}24.6154%{transform:translate(70px,-90px);animation-timing-function:linear}25%{transform:translate(270px,-90px);animation-timing-function:ease-in-out}26.3462%{transform:translate(270px,214px);animation-timing-function:linear}26.9231%{transform:translate(270px,214px);animation-timing-function:ease-in-out}28.6538%{transform:translate(270px,66px);animation-timing-function:ease-in-out}31.1538%{transform:translate(566px,66px);animation-timing-function:ease-in-out}32.5%{transform:translate(566px,214px);animation-timing-function:linear}33.0769%{transform:translate(566px,214px);animation-timing-function:ease-in-out}34.4231%{transform:translate(566px,-90px);animation-timing-function:linear}41.3462%{transform:translate(566px,-90px);animation-timing-function:ease-in-out}42.6923%{transform:translate(566px,214px);animation-timing-function:linear}43.2692%{transform:translate(566px,214px);animation-timing-function:ease-in-out}44.6154%{transform:translate(566px,66px);animation-timing-function:ease-in-out}46.5385%{transform:translate(270px,66px);animation-timing-function:ease-in-out}47.6923%{transform:translate(270px,214px);animation-timing-function:linear}48.0769%{transform:translate(270px,214px);animation-timing-function:ease-in-out}49.6154%{transform:translate(270px,-90px);animation-timing-function:linear}50%{transform:translate(170px,-90px);animation-timing-function:ease-in-out}51.3462%{transform:translate(170px,214px);animation-timing-function:linear}51.9231%{transform:translate(170px,214px);animation-timing-function:ease-in-out}53.6538%{transform:translate(170px,66px);animation-timing-function:ease-in-out}56.1538%{transform:translate(566px,66px);animation-timing-function:ease-in-out}57.5%{transform:translate(566px,214px);animation-timing-function:linear}58.0769%{transform:translate(566px,214px);animation-timing-function:ease-in-out}59.4231%{transform:translate(566px,-90px);animation-timing-function:linear}66.3462%{transform:translate(566px,-90px);animation-timing-function:ease-in-out}67.6923%{transform:translate(566px,214px);animation-timing-function:linear}68.2692%{transform:translate(566px,214px);animation-timing-function:ease-in-out}69.6154%{transform:translate(566px,66px);animation-timing-function:ease-in-out}71.5385%{transform:translate(170px,66px);animation-timing-function:ease-in-out}72.6923%{transform:translate(170px,214px);animation-timing-function:linear}73.0769%{transform:translate(170px,214px);animation-timing-function:ease-in-out}74.6154%{transform:translate(170px,-90px);animation-timing-function:linear}75%{transform:translate(370px,-90px);animation-timing-function:ease-in-out}76.3462%{transform:translate(370px,214px);animation-timing-function:linear}76.9231%{transform:translate(370px,214px);animation-timing-function:ease-in-out}78.6538%{transform:translate(370px,66px);animation-timing-function:ease-in-out}81.1538%{transform:translate(566px,66px);animation-timing-function:ease-in-out}82.5%{transform:translate(566px,214px);animation-timing-function:linear}83.0769%{transform:translate(566px,214px);animation-timing-function:ease-in-out}84.4231%{transform:translate(566px,-90px);animation-timing-function:linear}91.3462%{transform:translate(566px,-90px);animation-timing-function:ease-in-out}92.6923%{transform:translate(566px,214px);animation-timing-function:linear}93.2692%{transform:translate(566px,214px);animation-timing-function:ease-in-out}94.6154%{transform:translate(566px,66px);animation-timing-function:ease-in-out}96.5385%{transform:translate(370px,66px);animation-timing-function:ease-in-out}97.6923%{transform:translate(370px,214px);animation-timing-function:linear}98.0769%{transform:translate(370px,214px);animation-timing-function:ease-in-out}99.6154%{transform:translate(370px,-90px);animation-timing-function:linear}100%{transform:translate(70px,-90px);animation-timing-function:linear}}
+@keyframes arm{0%{transform:rotate(0deg);animation-timing-function:linear}9.4231%{transform:rotate(0deg);animation-timing-function:ease-in-out}10.5769%{transform:rotate(15deg);animation-timing-function:ease-in-out}15.3846%{transform:rotate(17deg);animation-timing-function:ease-in-out}16.3462%{transform:rotate(0deg);animation-timing-function:linear}34.4231%{transform:rotate(0deg);animation-timing-function:ease-in-out}35.5769%{transform:rotate(15deg);animation-timing-function:ease-in-out}40.3846%{transform:rotate(17deg);animation-timing-function:ease-in-out}41.3462%{transform:rotate(0deg);animation-timing-function:linear}59.4231%{transform:rotate(0deg);animation-timing-function:ease-in-out}60.5769%{transform:rotate(15deg);animation-timing-function:ease-in-out}65.3846%{transform:rotate(17deg);animation-timing-function:ease-in-out}66.3462%{transform:rotate(0deg);animation-timing-function:linear}84.4231%{transform:rotate(0deg);animation-timing-function:ease-in-out}85.5769%{transform:rotate(15deg);animation-timing-function:ease-in-out}90.3846%{transform:rotate(17deg);animation-timing-function:ease-in-out}91.3462%{transform:rotate(0deg);animation-timing-function:linear}100%{transform:rotate(0deg);animation-timing-function:linear}}
+@keyframes ring{0%{transform:rotate(0deg);animation-timing-function:linear}8.0769%{transform:rotate(0deg);animation-timing-function:ease-in}9.6154%{transform:rotate(72deg);animation-timing-function:linear}15.3846%{transform:rotate(630deg);animation-timing-function:ease-out}17.3077%{transform:rotate(720deg);animation-timing-function:linear}33.0769%{transform:rotate(720deg);animation-timing-function:ease-in}34.6154%{transform:rotate(792deg);animation-timing-function:linear}40.3846%{transform:rotate(1350deg);animation-timing-function:ease-out}42.3077%{transform:rotate(1440deg);animation-timing-function:linear}58.0769%{transform:rotate(1440deg);animation-timing-function:ease-in}59.6154%{transform:rotate(1512deg);animation-timing-function:linear}65.3846%{transform:rotate(2070deg);animation-timing-function:ease-out}67.3077%{transform:rotate(2160deg);animation-timing-function:linear}83.0769%{transform:rotate(2160deg);animation-timing-function:ease-in}84.6154%{transform:rotate(2232deg);animation-timing-function:linear}90.3846%{transform:rotate(2790deg);animation-timing-function:ease-out}92.3077%{transform:rotate(2880deg);animation-timing-function:linear}100%{transform:rotate(2880deg);animation-timing-function:linear}}
+@keyframes idle{0%{opacity:1;animation-timing-function:linear}7.3077%{opacity:1;animation-timing-function:linear}7.8846%{opacity:0;animation-timing-function:linear}17.8846%{opacity:0;animation-timing-function:linear}18.4615%{opacity:1;animation-timing-function:linear}32.3077%{opacity:1;animation-timing-function:linear}32.8846%{opacity:0;animation-timing-function:linear}42.8846%{opacity:0;animation-timing-function:linear}43.4615%{opacity:1;animation-timing-function:linear}57.3077%{opacity:1;animation-timing-function:linear}57.8846%{opacity:0;animation-timing-function:linear}67.8846%{opacity:0;animation-timing-function:linear}68.4615%{opacity:1;animation-timing-function:linear}82.3077%{opacity:1;animation-timing-function:linear}82.8846%{opacity:0;animation-timing-function:linear}92.8846%{opacity:0;animation-timing-function:linear}93.4615%{opacity:1;animation-timing-function:linear}100%{opacity:1;animation-timing-function:linear}}
+@keyframes notes{0%{opacity:0;animation-timing-function:linear}9.6154%{opacity:0;animation-timing-function:linear}10.7692%{opacity:1;animation-timing-function:linear}15.3846%{opacity:1;animation-timing-function:linear}16.5385%{opacity:0;animation-timing-function:linear}34.6154%{opacity:0;animation-timing-function:linear}35.7692%{opacity:1;animation-timing-function:linear}40.3846%{opacity:1;animation-timing-function:linear}41.5385%{opacity:0;animation-timing-function:linear}59.6154%{opacity:0;animation-timing-function:linear}60.7692%{opacity:1;animation-timing-function:linear}65.3846%{opacity:1;animation-timing-function:linear}66.5385%{opacity:0;animation-timing-function:linear}84.6154%{opacity:0;animation-timing-function:linear}85.7692%{opacity:1;animation-timing-function:linear}90.3846%{opacity:1;animation-timing-function:linear}91.5385%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes led{0%{opacity:0;animation-timing-function:linear}8.0769%{opacity:0;animation-timing-function:linear}8.4615%{opacity:1;animation-timing-function:linear}17.3077%{opacity:1;animation-timing-function:linear}17.6923%{opacity:0;animation-timing-function:linear}33.0769%{opacity:0;animation-timing-function:linear}33.4615%{opacity:1;animation-timing-function:linear}42.3077%{opacity:1;animation-timing-function:linear}42.6923%{opacity:0;animation-timing-function:linear}58.0769%{opacity:0;animation-timing-function:linear}58.4615%{opacity:1;animation-timing-function:linear}67.3077%{opacity:1;animation-timing-function:linear}67.6923%{opacity:0;animation-timing-function:linear}83.0769%{opacity:0;animation-timing-function:linear}83.4615%{opacity:1;animation-timing-function:linear}92.3077%{opacity:1;animation-timing-function:linear}92.6923%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes disc0{0%{transform:translate(70px,258px);animation-timing-function:linear}1.9231%{transform:translate(70px,258px);animation-timing-function:ease-in-out}3.6538%{transform:translate(70px,110px);animation-timing-function:ease-in-out}6.1538%{transform:translate(566px,110px);animation-timing-function:ease-in-out}7.5%{transform:translate(566px,258px);animation-timing-function:linear}18.2692%{transform:translate(566px,258px);animation-timing-function:ease-in-out}19.6154%{transform:translate(566px,110px);animation-timing-function:ease-in-out}21.5385%{transform:translate(70px,110px);animation-timing-function:ease-in-out}22.6923%{transform:translate(70px,258px);animation-timing-function:linear}100%{transform:translate(70px,258px);animation-timing-function:linear}}
+@keyframes spin0{0%{transform:rotate(0deg);animation-timing-function:linear}8.0769%{transform:rotate(0deg);animation-timing-function:ease-in}9.6154%{transform:rotate(72deg);animation-timing-function:linear}15.3846%{transform:rotate(630deg);animation-timing-function:ease-out}17.3077%{transform:rotate(720deg);animation-timing-function:linear}100%{transform:rotate(720deg);animation-timing-function:linear}}
+@keyframes name0{0%{opacity:0;animation-timing-function:linear}8.0769%{opacity:0;animation-timing-function:linear}8.6538%{opacity:1;animation-timing-function:linear}17.3077%{opacity:1;animation-timing-function:linear}17.8846%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes tag0{0%{opacity:0;transform:scale(.6);animation-timing-function:linear}7.6923%{opacity:0;transform:scale(.6);animation-timing-function:ease-out}8.4615%{opacity:1;transform:scale(1);animation-timing-function:linear}17.3077%{opacity:1;transform:scale(1);animation-timing-function:ease-in}17.8846%{opacity:0;transform:scale(.85);animation-timing-function:linear}100%{opacity:0;transform:scale(.6);animation-timing-function:linear}}
+@keyframes disc1{0%{transform:translate(170px,258px);animation-timing-function:linear}51.9231%{transform:translate(170px,258px);animation-timing-function:ease-in-out}53.6538%{transform:translate(170px,110px);animation-timing-function:ease-in-out}56.1538%{transform:translate(566px,110px);animation-timing-function:ease-in-out}57.5%{transform:translate(566px,258px);animation-timing-function:linear}68.2692%{transform:translate(566px,258px);animation-timing-function:ease-in-out}69.6154%{transform:translate(566px,110px);animation-timing-function:ease-in-out}71.5385%{transform:translate(170px,110px);animation-timing-function:ease-in-out}72.6923%{transform:translate(170px,258px);animation-timing-function:linear}100%{transform:translate(170px,258px);animation-timing-function:linear}}
+@keyframes spin1{0%{transform:rotate(0deg);animation-timing-function:linear}58.0769%{transform:rotate(0deg);animation-timing-function:ease-in}59.6154%{transform:rotate(72deg);animation-timing-function:linear}65.3846%{transform:rotate(630deg);animation-timing-function:ease-out}67.3077%{transform:rotate(720deg);animation-timing-function:linear}100%{transform:rotate(720deg);animation-timing-function:linear}}
+@keyframes name1{0%{opacity:0;animation-timing-function:linear}58.0769%{opacity:0;animation-timing-function:linear}58.6538%{opacity:1;animation-timing-function:linear}67.3077%{opacity:1;animation-timing-function:linear}67.8846%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes tag1{0%{opacity:0;transform:scale(.6);animation-timing-function:linear}57.6923%{opacity:0;transform:scale(.6);animation-timing-function:ease-out}58.4615%{opacity:1;transform:scale(1);animation-timing-function:linear}67.3077%{opacity:1;transform:scale(1);animation-timing-function:ease-in}67.8846%{opacity:0;transform:scale(.85);animation-timing-function:linear}100%{opacity:0;transform:scale(.6);animation-timing-function:linear}}
+@keyframes disc2{0%{transform:translate(270px,258px);animation-timing-function:linear}26.9231%{transform:translate(270px,258px);animation-timing-function:ease-in-out}28.6538%{transform:translate(270px,110px);animation-timing-function:ease-in-out}31.1538%{transform:translate(566px,110px);animation-timing-function:ease-in-out}32.5%{transform:translate(566px,258px);animation-timing-function:linear}43.2692%{transform:translate(566px,258px);animation-timing-function:ease-in-out}44.6154%{transform:translate(566px,110px);animation-timing-function:ease-in-out}46.5385%{transform:translate(270px,110px);animation-timing-function:ease-in-out}47.6923%{transform:translate(270px,258px);animation-timing-function:linear}100%{transform:translate(270px,258px);animation-timing-function:linear}}
+@keyframes spin2{0%{transform:rotate(0deg);animation-timing-function:linear}33.0769%{transform:rotate(0deg);animation-timing-function:ease-in}34.6154%{transform:rotate(72deg);animation-timing-function:linear}40.3846%{transform:rotate(630deg);animation-timing-function:ease-out}42.3077%{transform:rotate(720deg);animation-timing-function:linear}100%{transform:rotate(720deg);animation-timing-function:linear}}
+@keyframes name2{0%{opacity:0;animation-timing-function:linear}33.0769%{opacity:0;animation-timing-function:linear}33.6538%{opacity:1;animation-timing-function:linear}42.3077%{opacity:1;animation-timing-function:linear}42.8846%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes tag2{0%{opacity:0;transform:scale(.6);animation-timing-function:linear}32.6923%{opacity:0;transform:scale(.6);animation-timing-function:ease-out}33.4615%{opacity:1;transform:scale(1);animation-timing-function:linear}42.3077%{opacity:1;transform:scale(1);animation-timing-function:ease-in}42.8846%{opacity:0;transform:scale(.85);animation-timing-function:linear}100%{opacity:0;transform:scale(.6);animation-timing-function:linear}}
+@keyframes disc3{0%{transform:translate(370px,258px);animation-timing-function:linear}76.9231%{transform:translate(370px,258px);animation-timing-function:ease-in-out}78.6538%{transform:translate(370px,110px);animation-timing-function:ease-in-out}81.1538%{transform:translate(566px,110px);animation-timing-function:ease-in-out}82.5%{transform:translate(566px,258px);animation-timing-function:linear}93.2692%{transform:translate(566px,258px);animation-timing-function:ease-in-out}94.6154%{transform:translate(566px,110px);animation-timing-function:ease-in-out}96.5385%{transform:translate(370px,110px);animation-timing-function:ease-in-out}97.6923%{transform:translate(370px,258px);animation-timing-function:linear}100%{transform:translate(370px,258px);animation-timing-function:linear}}
+@keyframes spin3{0%{transform:rotate(0deg);animation-timing-function:linear}83.0769%{transform:rotate(0deg);animation-timing-function:ease-in}84.6154%{transform:rotate(72deg);animation-timing-function:linear}90.3846%{transform:rotate(630deg);animation-timing-function:ease-out}92.3077%{transform:rotate(720deg);animation-timing-function:linear}100%{transform:rotate(720deg);animation-timing-function:linear}}
+@keyframes name3{0%{opacity:0;animation-timing-function:linear}83.0769%{opacity:0;animation-timing-function:linear}83.6538%{opacity:1;animation-timing-function:linear}92.3077%{opacity:1;animation-timing-function:linear}92.8846%{opacity:0;animation-timing-function:linear}100%{opacity:0;animation-timing-function:linear}}
+@keyframes tag3{0%{opacity:0;transform:scale(.6);animation-timing-function:linear}82.6923%{opacity:0;transform:scale(.6);animation-timing-function:ease-out}83.4615%{opacity:1;transform:scale(1);animation-timing-function:linear}92.3077%{opacity:1;transform:scale(1);animation-timing-function:ease-in}92.8846%{opacity:0;transform:scale(.85);animation-timing-function:linear}100%{opacity:0;transform:scale(.6);animation-timing-function:linear}}</style>
+</defs>
+
+<rect width="832" height="416" fill="url(#bg)"/>
+<rect width="832" height="416" fill="url(#lamp)"/>
+<rect y="392" width="832" height="24" fill="#090d19"/>
+<!-- pendant lamp: source of the warm glow, swinging very slightly -->
+<g class="lamp">
+<line x1="736" y1="0" x2="736" y2="46" stroke="#2a3150" stroke-width="2"/>
+<path d="M712 74 Q712 48 736 46 Q760 48 760 74 Z" fill="#3a4468" stroke="#58648f"/>
+<ellipse cx="736" cy="75" rx="24" ry="4" fill="#ffd9a0"/>
+<ellipse cx="736" cy="78" rx="30" ry="6" fill="#ffb35c" opacity=".22"/>
+</g>
+
+<!-- rack -->
+<g>
+  <rect x="34" y="350" width="10" height="44" fill="url(#woodDark)"/><rect x="396" y="350" width="10" height="44" fill="url(#woodDark)"/>
+  <rect x="16" y="196" width="408" height="136" rx="4" fill="url(#woodDark)"/>
+  <rect x="16" y="196" width="408" height="7" rx="3" fill="url(#wood)"/>
+  <rect x="16" y="196" width="9" height="140" rx="3" fill="url(#wood)"/><rect x="415" y="196" width="9" height="140" rx="3" fill="url(#wood)"/>
+</g>
+
+<!-- turntable -->
+<g>
+  <rect x="440" y="380" width="392" height="12" fill="url(#wood)"/>
+  <rect x="462" y="150" width="350" height="230" rx="14" fill="url(#plinth)" stroke="#3b4468" stroke-width="1.5"/>
+  <rect x="470" y="154" width="334" height="2" rx="1" fill="#fff" opacity=".08"/>
+  <circle cx="566" cy="258" r="55" fill="#10142a"/>
+  <circle cx="566" cy="258" r="52" fill="#1d2440" stroke="#4a5578" stroke-width="1.5"/>
+  <g transform="translate(566 258)"><circle class="ring" r="50" fill="none" stroke="#7d89b4" stroke-width="2.4" stroke-dasharray="1.2 3.6"/></g>
+  <circle cx="494" cy="226" r="9" fill="#2f3858" stroke="#6f7ba3"/><path d="M494 219 V225" stroke="#f2e9d8" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="494" cy="252" r="6" fill="#2f3858" stroke="#6f7ba3"/>
+  <circle cx="494" cy="278" r="5.5" fill="#0f2a1c"/><circle class="led" cx="494" cy="278" r="3.6" fill="#5dffa0" filter="url(#glow)"/>
+  <circle cx="770" cy="200" r="16" fill="#3b4466" stroke="#6f7ba3"/>
+  <circle cx="616" cy="292" r="5" fill="#222a45" stroke="#4a5578"/>
+  <rect x="486" y="338" width="302" height="32" rx="5" fill="#07120e" stroke="#2c3a5a"/>
+  <text x="498" y="358" font-size="13" font-weight="normal" fill="#6fc98f" text-anchor="start" textLength="117.0" lengthAdjust="spacingAndGlyphs" opacity="1" class="idle" filter="url(#glow)">INSERT A RECORD</text>
+  <g class="name name0" filter="url(#glow)"><text x="498" y="358" font-size="13" font-weight="normal" fill="#9cf5b8" text-anchor="start" textLength="195.0" lengthAdjust="spacingAndGlyphs" opacity="1" >NOW SPINNING · G.U.A.R.D.</text></g><g class="name name1" filter="url(#glow)"><text x="498" y="358" font-size="13" font-weight="normal" fill="#9cf5b8" text-anchor="start" textLength="171.6" lengthAdjust="spacingAndGlyphs" opacity="1" >NOW SPINNING · GITREAL</text></g><g class="name name2" filter="url(#glow)"><text x="498" y="358" font-size="13" font-weight="normal" fill="#9cf5b8" text-anchor="start" textLength="187.2" lengthAdjust="spacingAndGlyphs" opacity="1" >NOW SPINNING · TEAMTRUTH</text></g><g class="name name3" filter="url(#glow)"><text x="498" y="358" font-size="13" font-weight="normal" fill="#9cf5b8" text-anchor="start" textLength="171.6" lengthAdjust="spacingAndGlyphs" opacity="1" >NOW SPINNING · EXAMHUB</text></g>
+</g>
+
+
+<g class="disc0"><g class="spin spin0">
+  <circle r="44" fill="#0b0e1a" stroke="#2d3556" stroke-width="1"/><circle r="40" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="36" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="32" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="28" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="24" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="20" fill="none" stroke="#242c46" stroke-width=".8"/>
+  <path d="M0 0 L44 0 A44 44 0 0 1 31 31 Z" fill="#fff" opacity=".07"/>
+  <path d="M0 0 L-44 0 A44 44 0 0 1 -31 -31 Z" fill="#fff" opacity=".05"/>
+  <path d="M28 -21 A35 35 0 0 1 35 0" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M-28 21 A35 35 0 0 1 -35 0" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+  <circle r="16" fill="#16bece"/><circle r="14.2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <text x="0" y="11.6" font-size="8.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="5.3" lengthAdjust="spacingAndGlyphs" opacity="1" >G</text>
+  <circle r="2.4" fill="#0a1020"/>
+</g>
+<g class="disc1"><g class="spin spin1">
+  <circle r="44" fill="#0b0e1a" stroke="#2d3556" stroke-width="1"/><circle r="40" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="36" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="32" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="28" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="24" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="20" fill="none" stroke="#242c46" stroke-width=".8"/>
+  <path d="M0 0 L44 0 A44 44 0 0 1 31 31 Z" fill="#fff" opacity=".07"/>
+  <path d="M0 0 L-44 0 A44 44 0 0 1 -31 -31 Z" fill="#fff" opacity=".05"/>
+  <path d="M28 -21 A35 35 0 0 1 35 0" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M-28 21 A35 35 0 0 1 -35 0" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+  <circle r="16" fill="#ac70df"/><circle r="14.2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <text x="0" y="11.6" font-size="8.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="10.5" lengthAdjust="spacingAndGlyphs" opacity="1" >GR</text>
+  <circle r="2.4" fill="#0a1020"/>
+</g>
+<g class="disc2"><g class="spin spin2">
+  <circle r="44" fill="#0b0e1a" stroke="#2d3556" stroke-width="1"/><circle r="40" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="36" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="32" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="28" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="24" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="20" fill="none" stroke="#242c46" stroke-width=".8"/>
+  <path d="M0 0 L44 0 A44 44 0 0 1 31 31 Z" fill="#fff" opacity=".07"/>
+  <path d="M0 0 L-44 0 A44 44 0 0 1 -31 -31 Z" fill="#fff" opacity=".05"/>
+  <path d="M28 -21 A35 35 0 0 1 35 0" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M-28 21 A35 35 0 0 1 -35 0" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+  <circle r="16" fill="#3bc69f"/><circle r="14.2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <text x="0" y="11.6" font-size="8.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="10.5" lengthAdjust="spacingAndGlyphs" opacity="1" >TT</text>
+  <circle r="2.4" fill="#0a1020"/>
+</g>
+<g class="disc3"><g class="spin spin3">
+  <circle r="44" fill="#0b0e1a" stroke="#2d3556" stroke-width="1"/><circle r="40" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="36" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="32" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="28" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="24" fill="none" stroke="#242c46" stroke-width=".8"/><circle r="20" fill="none" stroke="#242c46" stroke-width=".8"/>
+  <path d="M0 0 L44 0 A44 44 0 0 1 31 31 Z" fill="#fff" opacity=".07"/>
+  <path d="M0 0 L-44 0 A44 44 0 0 1 -31 -31 Z" fill="#fff" opacity=".05"/>
+  <path d="M28 -21 A35 35 0 0 1 35 0" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M-28 21 A35 35 0 0 1 -35 0" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+  <circle r="16" fill="#efb650"/><circle r="14.2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <text x="0" y="11.6" font-size="8.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="10.5" lengthAdjust="spacingAndGlyphs" opacity="1" >EH</text>
+  <circle r="2.4" fill="#0a1020"/>
+</g>
+
+<g transform="translate(24 238)">
+  <rect width="92" height="92" rx="3" fill="#16bece"/>
+  <rect width="92" height="6" rx="3" fill="#000" opacity=".2"/>
+  <rect x="5" y="9" width="82" height="78" rx="2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <circle cx="46" cy="38" r="26" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <circle cx="46" cy="38" r="9" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <text x="11" y="22" font-size="7" font-weight="bold" fill="#0a1020" text-anchor="start" textLength="33.6" lengthAdjust="spacingAndGlyphs" opacity="0.65" >TRACK 01</text>
+  <text x="46" y="66" font-size="11.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="71.3" lengthAdjust="spacingAndGlyphs" opacity="1" >G.U.A.R.D.</text>
+  <text x="46" y="79" font-size="7.5" font-weight="normal" fill="#0a1020" text-anchor="middle" textLength="40.5" lengthAdjust="spacingAndGlyphs" opacity="0.75" >VISION AI</text>
+</g>
+<g transform="translate(124 238)">
+  <rect width="92" height="92" rx="3" fill="#ac70df"/>
+  <rect width="92" height="6" rx="3" fill="#000" opacity=".2"/>
+  <rect x="5" y="9" width="82" height="78" rx="2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <circle cx="46" cy="38" r="26" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <circle cx="46" cy="38" r="9" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <text x="11" y="22" font-size="7" font-weight="bold" fill="#0a1020" text-anchor="start" textLength="33.6" lengthAdjust="spacingAndGlyphs" opacity="0.65" >TRACK 02</text>
+  <text x="46" y="66" font-size="11.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="49.9" lengthAdjust="spacingAndGlyphs" opacity="1" >GITREAL</text>
+  <text x="46" y="79" font-size="7.5" font-weight="normal" fill="#0a1020" text-anchor="middle" textLength="40.5" lengthAdjust="spacingAndGlyphs" opacity="0.75" >DEV TOOLS</text>
+</g>
+<g transform="translate(224 238)">
+  <rect width="92" height="92" rx="3" fill="#3bc69f"/>
+  <rect width="92" height="6" rx="3" fill="#000" opacity=".2"/>
+  <rect x="5" y="9" width="82" height="78" rx="2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <circle cx="46" cy="38" r="26" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <circle cx="46" cy="38" r="9" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <text x="11" y="22" font-size="7" font-weight="bold" fill="#0a1020" text-anchor="start" textLength="33.6" lengthAdjust="spacingAndGlyphs" opacity="0.65" >TRACK 03</text>
+  <text x="46" y="66" font-size="11.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="64.2" lengthAdjust="spacingAndGlyphs" opacity="1" >TEAMTRUTH</text>
+  <text x="46" y="79" font-size="7.5" font-weight="normal" fill="#0a1020" text-anchor="middle" textLength="40.5" lengthAdjust="spacingAndGlyphs" opacity="0.75" >AI MEMORY</text>
+</g>
+<g transform="translate(324 238)">
+  <rect width="92" height="92" rx="3" fill="#efb650"/>
+  <rect width="92" height="6" rx="3" fill="#000" opacity=".2"/>
+  <rect x="5" y="9" width="82" height="78" rx="2" fill="none" stroke="#0a1020" stroke-opacity=".3"/>
+  <circle cx="46" cy="38" r="26" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <circle cx="46" cy="38" r="9" fill="none" stroke="#0a1020" stroke-opacity=".14" stroke-width="2"/>
+  <text x="11" y="22" font-size="7" font-weight="bold" fill="#0a1020" text-anchor="start" textLength="33.6" lengthAdjust="spacingAndGlyphs" opacity="0.65" >TRACK 04</text>
+  <text x="46" y="66" font-size="11.5" font-weight="bold" fill="#0a1020" text-anchor="middle" textLength="49.9" lengthAdjust="spacingAndGlyphs" opacity="1" >EXAMHUB</text>
+  <text x="46" y="79" font-size="7.5" font-weight="normal" fill="#0a1020" text-anchor="middle" textLength="45.0" lengthAdjust="spacingAndGlyphs" opacity="0.75" >AUTOMATION</text>
+</g>
+
+<!-- rack plaque -->
+<rect x="12" y="330" width="416" height="24" rx="3" fill="url(#wood)"/>
+<rect x="150" y="334" width="140" height="16" rx="2" fill="#d9b779"/>
+<text x="220" y="346" font-size="11.5" font-weight="bold" fill="#3a281d" text-anchor="middle" textLength="91.1" lengthAdjust="spacingAndGlyphs" opacity="1" >PROJECT RACK</text>
+<circle cx="24" cy="342" r="2.2" fill="#2a1c13"/><circle cx="416" cy="342" r="2.2" fill="#2a1c13"/>
+
+<!-- tonearm -->
+<g transform="translate(770 200)"><g class="arm">
+  <line x1="0" y1="0" x2="31" y2="-18" stroke="#8d97bb" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="35" cy="-20" r="9" fill="#6e7aa6" stroke="#aeb7d6"/>
+  <line x1="0" y1="0" x2="-154" y2="89" stroke="#c9d0e8" stroke-width="4.5" stroke-linecap="round"/>
+  <g transform="translate(-154 89) rotate(150)"><rect x="-22" y="-6" width="20" height="12" rx="2" fill="#e8c27a"/><rect x="-4" y="-2.5" width="6" height="5" rx="1" fill="#1a1a22"/></g>
+  <circle r="7" fill="#aeb7d6" stroke="#4a5578"/>
+</g></g>
+
+
+<g class="tag tag0">
+  <rect x="509" y="156" width="114" height="22" rx="11" fill="#0a1020" stroke="#16bece" stroke-width="1.5"/>
+  <path d="M521 162 L521 172 L529 167 Z" fill="#16bece"/>
+  <text x="574" y="171.5" font-size="13" font-weight="bold" fill="#16bece" text-anchor="middle" textLength="78.0" lengthAdjust="spacingAndGlyphs" opacity="1" >G.U.A.R.D.</text>
+</g>
+<g class="tag tag1">
+  <rect x="521.5" y="156" width="89" height="22" rx="11" fill="#0a1020" stroke="#ac70df" stroke-width="1.5"/>
+  <path d="M533.5 162 L533.5 172 L541.5 167 Z" fill="#ac70df"/>
+  <text x="574" y="171.5" font-size="13" font-weight="bold" fill="#ac70df" text-anchor="middle" textLength="54.6" lengthAdjust="spacingAndGlyphs" opacity="1" >GITREAL</text>
+</g>
+<g class="tag tag2">
+  <rect x="513" y="156" width="106" height="22" rx="11" fill="#0a1020" stroke="#3bc69f" stroke-width="1.5"/>
+  <path d="M525 162 L525 172 L533 167 Z" fill="#3bc69f"/>
+  <text x="574" y="171.5" font-size="13" font-weight="bold" fill="#3bc69f" text-anchor="middle" textLength="70.2" lengthAdjust="spacingAndGlyphs" opacity="1" >TEAMTRUTH</text>
+</g>
+<g class="tag tag3">
+  <rect x="521.5" y="156" width="89" height="22" rx="11" fill="#0a1020" stroke="#efb650" stroke-width="1.5"/>
+  <path d="M533.5 162 L533.5 172 L541.5 167 Z" fill="#efb650"/>
+  <text x="574" y="171.5" font-size="13" font-weight="bold" fill="#efb650" text-anchor="middle" textLength="54.6" lengthAdjust="spacingAndGlyphs" opacity="1" >EXAMHUB</text>
+</g>
+
+<!-- floating notes -->
+<g class="notes" transform="translate(648 140)" fill="#f2e9d8">
+  <g class="note"><ellipse rx="4.5" ry="3.2" transform="rotate(-20)"/><rect x="3" y="-16" width="1.7" height="16"/><path d="M4.7 -16 q6 2 6 8 q-3 -4 -6 -4z"/></g>
+  <g class="note b" transform="translate(30 10)"><ellipse rx="4.5" ry="3.2" transform="rotate(-20)"/><rect x="3" y="-16" width="1.7" height="16"/><path d="M4.7 -16 q6 2 6 8 q-3 -4 -6 -4z"/></g>
+  <g class="note c" transform="translate(-26 8)"><ellipse rx="4.5" ry="3.2" transform="rotate(-20)"/><rect x="3" y="-16" width="1.7" height="16"/><path d="M4.7 -16 q6 2 6 8 q-3 -4 -6 -4z"/></g>
+</g>
+
+<!-- hand: origin is the pinch point, the sleeve runs up and off-screen -->
+<g class="hand">
+  <rect x="-24" y="-520" width="48" height="440" fill="#3a6ea5"/>
+  <rect x="-24" y="-520" width="6" height="440" fill="#2f5a8a"/>
+  <rect x="-28" y="-86" width="56" height="17" rx="4" fill="#f2e9d8"/>
+  <rect x="-23" y="-72" width="46" height="44" rx="15" fill="#e8b48c"/>
+  <rect x="-23" y="-50" width="46" height="22" rx="11" fill="#d99f78"/>
+  <line x1="19" y1="-54" x2="22" y2="-30" stroke="#c98f68" stroke-width="10" stroke-linecap="round"/>
+  <line x1="-14" y1="-38" x2="-3" y2="-3" stroke="#b8805c" stroke-width="16" stroke-linecap="round"/>
+  <line x1="-14" y1="-38" x2="-3" y2="-3" stroke="#eebd95" stroke-width="12" stroke-linecap="round"/>
+  <line x1="12" y1="-40" x2="3" y2="-3" stroke="#b8805c" stroke-width="15" stroke-linecap="round"/>
+  <line x1="12" y1="-40" x2="3" y2="-3" stroke="#eebd95" stroke-width="11" stroke-linecap="round"/>
+</g>
+</svg>
